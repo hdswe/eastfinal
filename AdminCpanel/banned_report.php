@@ -15,7 +15,7 @@
   <meta name="author" content="">
   <link rel="shortcut icon" href="images/favicon.png" type="image/png">
 
-  <title><?= $settingsSiteName ?></title>
+  <title><?php $settingsSiteName ?></title>
 
   <link href="css/style.default.css" rel="stylesheet">
   <link rel="stylesheet" href="css/bootstrap-fileupload.min.css" />
@@ -42,7 +42,7 @@
               </tr>
             </thead>
             <tbody>
-                <?
+                <?php
                 $sql = "SELECT 
                         users.id AS userid,
                         users.username,
@@ -54,7 +54,7 @@
                         FROM banned_course, users
                         
                         WHERE
-                        users.id_number=banned_course.user_id
+                        users.id=banned_course.user_id
 						
                         ORDER BY users.full_name ASC
 					";
@@ -82,20 +82,20 @@
                 <tr class="unread">
                 	<td>&nbsp;&nbsp;</td>
                         <td>
-                        <?=  $countRow ?>
+                        <?php  $countRow ?>
                                                   
                   </td>
-                <td><?= $result['full_name'] ?></td>
+                <td><?php $result['full_name'] ?></td>
                 
                   
                
-                <td><?=date('Y/m/d H:i:s', $result['start_time'])?></td>
-		<td><?=$result['banned_time']?> ساعة </td>
-		<td><?=date('Y/m/d H:i:s', $result['end_time'])?></td>
+                <td><?phpdate('Y/m/d H:i:s', $result['start_time'])?></td>
+		<td><?php$result['banned_time']?> ساعة </td>
+		<td><?phpdate('Y/m/d H:i:s', $result['end_time'])?></td>
                 
                 </tr>
-                <? } } ?>
-
+                <?php } } ?>
+                
             </tbody>
   </table>
   </body>

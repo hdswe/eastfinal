@@ -31,12 +31,7 @@
                 <p>حدث خطأ قم بالتحقق وأعد المحاولة مرة اخرى</p>
               </div>
         <? } ?>
-              <? if ($_GET['process'] == 'not_exist') { ?>
-                  <div class="alert alert-success">
-                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                      <p>رقم البطاقة خطأ أو أن الشخص غير مسجل لدينا</p>
-                  </div>
-              <? } ?>
+
         
           <table class="table table-hidaction table-striped mb30">
             <thead>

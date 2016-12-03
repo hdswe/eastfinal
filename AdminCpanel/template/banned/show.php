@@ -42,12 +42,7 @@
                 <p>حدث خطأ قم بالتحقق وأعد المحاولة مرة اخرى</p>
               </div>
         <? } ?>
-              <? if ($_GET['process'] == 'not_exist') { ?>
-                  <div class="alert alert-danger">
-                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                      <p>رقم البطاقة خطأ أو أن الشخص غير مسجل لدينا</p>
-                  </div>
-              <? } ?>
+
         
           <table class="table table-hidaction table-striped mb30">
             <thead>
@@ -69,7 +64,7 @@
 				FROM
 				 `banned_course`, `users`
 				 WHERE
-				 users.id_number = banned_course.user_id
+				 users.id = banned_course.user_id
 				 AND
 				 banned_course.end_time>".time()."
 				  LIMIT $startpoint , $limit";
@@ -90,7 +85,7 @@
                     } else {
 
                     $rows = $pdo->pdoGetAll($sql);
-
+                    
                     foreach($rows as $result) {
                 ?>
                 <tr class="unread">
