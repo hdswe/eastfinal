@@ -1,0 +1,174 @@
+*{
+  -wwbkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  direction: rtl;
+  background: #E8E8E8;
+  font-family:  'AL-Mohanad Bold' ,serif;
+}
+.container{
+  width: 940px;
+  margin: 20px auto;
+  position: relative;
+  background: #FFF;
+  box-shadow: 0px 1px 2px 0px #aaa;
+}
+.card-cer{min-height: 650px;}
+.img-right-quran{
+  position: relative;
+  top: 160px
+}
+.img-right-quran img{
+  width: 235px;
+  height: 330px;
+}
+
+.logo-right{
+  position: absolute;
+  right: 0
+}
+.logo-right img{
+  margin-top: 111px;
+  margin-right: 81px;
+
+  height: 90px;
+}
+.logo-center{
+  position: absolute;
+  right: 50%
+}
+.logo-center img{
+  width: 100px;
+  height: 180px;
+  margin-top: 40px;
+
+}
+/*.logo-center img{width: 100%}*/
+.logo-left {
+  position: relative;
+  float: left;
+}
+.logo-left img{
+  width: 200px;
+  height: 390px;
+  margin-top: 111px;
+}
+
+.text-info {
+  position: relative;
+  bottom: 100px;
+  right: 65px;
+  padding-right: 20px;
+  padding-left: 20px;
+
+}
+.text-info p {  margin: 0; color: #444933;font-size:25px;}
+.text-info p:nth-child(2){margin-right: 80px}
+.text-info p:nth-child(3){margin-right: 70px}
+.text-info p:nth-child(4){margin-right: 70px}
+.text-info p:nth-child(5){margin-right: -15px}
+.text-info p:nth-child(7){margin-right: 90px}
+.text-info p span{
+  color: #f00;
+}
+
+
+.footer {
+  position: relative;
+  text-align: left;
+  bottom: 100px;
+  left: -170px;
+}
+.footer .admin {
+  float: right;
+  width: 30%
+}
+.footer .admin h2{
+  font-size: 25px;
+  color: #6e8b41
+}
+.footer .admin p{font-size: 20px;}
+.footer .admin-center {
+  margin-right: 50px
+}
+@media print {
+  *{
+    font-family: 'AL-Mohanad Bold';
+  }
+
+  .container{width:  3508px;height: 2480px;margin: 0}
+  .card-cer{width:  3508px;height: 2480px}
+  .img-right-quran{top: 450px}
+  .img-right-quran img{width: 975px;height: 1592px}
+
+  .logo-right img{
+    width: 818px;
+    height: 365px;
+    margin-top:280px;
+    margin-right: 300px;
+  }
+  .logo-center{right: 45%}
+  .logo-center img{
+    width: 306px;
+    height: 495px;
+    margin-top: 120px
+  }
+
+  .logo-left {
+    top: 290px;
+    left: -450px
+  }
+  .logo-left img {
+    width: 1156px;
+    height: 2017px;
+
+
+  }
+  /*  .text-info {
+      position: absolute;
+      top: 900px;
+      right: 300px;
+      padding-right: 20px;
+    }
+    .text-info p{font-size: 65pt}
+  */
+  .footer .admin h2{font-size: 60pt}
+  .footer .admin p{font-size: 55pt}
+}
+
+
+
+
+
+/* Page Inputs Styles */
+.myForm{
+  width: 380px;
+  color: #14439C;
+  margin: 50px auto;
+  background: #FFF;
+  padding: 25px;
+  /* border: 1px solid #C3BDBD; */
+  box-shadow: 0px 1px 2px 0px #aaa;
+}
+.myForm input{
+  display: block;
+  color: #484343;
+  width: 98%;
+  height: 35px;
+  border: 1px solid #DDD;
+  padding-right: 10px;
+  margin-bottom: 10px;
+  outline: none;
+  font-size: 14px;
+
+}
+.myForm input[type=submit] {
+  width: 98%;
+  border: 1px solid #716B6B;
+  height: 35px;
+  background: #989292;
+  color: #FFF;
+}

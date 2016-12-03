@@ -1,0 +1,2 @@
+[14-Apr-2015 09:16:54 UTC] PHP Fatal error:  Call to a member function pdoExecute() on a non-object in /home/eastal5/public_html/AdminCpanel/template/questionnaire/questions.php on line 64
+[14-Apr-2015 09:18:43 UTC] PHP Fatal error:  Call to a member function pdoGetRow() on a non-object in /home/eastal5/public_html/AdminCpanel/template/questionnaire/questions.php on line 4
