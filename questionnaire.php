@@ -8,7 +8,7 @@
 
 */	
 
-	$sql_is_insert = "SELECT * FROM `questionnaire` WHERE `course_id` = ".$_GET['course']." AND `user_id` = ".$_SESSION['user_id']."";
+	$sql_is_insert = "SELECT * FROM `questionnaire` WHERE `course_id` = ".$_GET['course']." AND `user_id` = ".$_GET['user_id']."";
 	$execsql_is_insert = $pdo->pdoExecute($sql_is_insert);
 	if($pdo->pdoRowCount($execsql_is_insert) == 1) {
 		$table_show = 'yes';
@@ -29,11 +29,16 @@
 		header('Location: ?course='.$_GET['course'].'&process=successfully');
     }
 
+	/*if(isset($_GET['course'])&&isset($_GET['user_id'])){ 
+		$sql_course = "SELECT * FROM `course` WHERE `id` = ".$_GET['course']." and `user_id`=".$_GET['user_id']."";
+		$reslut_course = $pdo->pdoGetRow($sql_course);
+	}*/
 	if(isset($_GET['course'])){ 
 		$sql_course = "SELECT * FROM `course` WHERE `id` = ".$_GET['course']."";
 		$reslut_course = $pdo->pdoGetRow($sql_course);
 	}
 
+	
 ?>
 <style>
 input[type="checkbox"], input[type="radio"] {
