@@ -67,7 +67,7 @@
               <tr>
                 <th></th>
                 <th>عنوان الدورة <span style="width: 200px;background-image: url(images/sort_icon.png)">&nbsp;&nbsp;&nbsp;&nbsp;</span></th>
-                <th>رابط الاستبيان</th>
+<!--                <th>رابط الاستبيان</th>-->
                 <th>البرنامج <span style="width: 200px;background-image: url(images/sort_icon.png)">&nbsp;&nbsp;&nbsp;&nbsp;</span></th>
                 <th>الحالة <span style="width: 200px;background-image: url(images/sort_icon.png)">&nbsp;&nbsp;&nbsp;&nbsp;</span></th>
                 <th>أيام الدورة<span style="width: 200px;background-image: url(images/sort_icon.png)">&nbsp;&nbsp;&nbsp;&nbsp;</span></th>
@@ -130,7 +130,7 @@
                                                   
                         </td>
                 <td><?= $result['coutitle'] ?></td>
-                <td><a href="../questionnaire.php?course=<?= $result['couid'] ?>">questionnaire.php?course=<?= $result['couid'] ?></a></td>
+<!--                <td><a href="../questionnaire.php?course=--><?//= $result['couid'] ?><!--">questionnaire.php?course=--><?//= $result['couid'] ?><!--</a></td>-->
                 <td><?= $result['prtitle'] ?></td>
                 <td><?
 				if ($result['status'] == '1') {
