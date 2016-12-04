@@ -12,7 +12,7 @@
 	<!-- Basic Page Needs
 	  ================================================== -->
 	<meta charset="utf-8"/>
-	<title>Diplomat | Home 4 Page</title>
+	<title><?= $settingsSiteName ?></title>
 	<meta name="description" content="Diplomat - Responsive Political HTML5 Template">
 
 	<!-- Mobile Specific Metas

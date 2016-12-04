@@ -45,6 +45,7 @@
                                             <th>أيام الدورة</th>
                                             <th>عدد ايام الحظور</th>
                                             <th>التفاصيل</th>
+                                            <th>التقييم</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -100,6 +101,18 @@
                                             ?>
                                             
                                             </td>
+                                            <td>
+                                                <?php
+                                                $excute_rating = $pdo->pdoExecute("SELECT * FROM `questionnaire` WHERE course_id=".$result['cid']." AND user_id=".$idUser."");
+                                                $rating = $pdo->pdoRowCount($excute_rating);
+
+                                                if($rating == 1) {
+                                                    echo 'غير متاح حاليا';
+                                                } else {
+                                                    echo '<a href="questionnaire.php?course='.$result['cid'].'">تقيم الدورة</a>';
+                                                }
+                                                ?>
+
                                         </tr>
                                      <?php } ?>
                                         
@@ -205,6 +218,8 @@
 
                 ?>
                 <td><?php if($register_day['id'] != NULL){ echo '<span class="glyphicon glyphicon-ok"></span>'; } else { echo '<span class="glyphicon glyphicon-remove"></span>'; } ?></td>
+                    <td><?php if($register_day['id'] != NULL){ echo '<span class="glyphicon glyphicon-ok"></span>'; } else { echo '<span class="glyphicon glyphicon-remove"></span>'; } ?></td>
+
                 <?php }  ?>
                 </tr>
                 <?php } } ?>

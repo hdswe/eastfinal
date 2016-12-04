@@ -11,12 +11,12 @@
           <div class="table-responsive">
           
           <div class="mb30">
-          <div class="col-sm-7">
-            <a class="btn btn-primary" href="?do=add"><span class="fa fa-pencil-square-o"></span>&nbsp; اضافة استبيان</a>
-          <button name="delChecked" type="submit" id="delChecked" class="btn btn-primary"><span class="fa fa-trash-o"></span>&nbsp; حذف المحدد</button>
-
-          
-            </div>
+<!--          <div class="col-sm-7">-->
+<!--            <a class="btn btn-primary" href="?do=add"><span class="fa fa-pencil-square-o"></span>&nbsp; اضافة استبيان</a>-->
+<!--          <button name="delChecked" type="submit" id="delChecked" class="btn btn-primary"><span class="fa fa-trash-o"></span>&nbsp; حذف المحدد</button>-->
+<!---->
+<!--          -->
+<!--            </div>-->
         <div class="col-sm-5">
             <div class="form-group">
                 <div class="col-sm-10">
@@ -48,10 +48,10 @@
           <table class="table table-hidaction table-striped mb30">
             <thead>
               <tr>
-                <th></th>
+                <th>التسلسل</th>
                 <th>الطالب</th>
                 <th>الدورة</th>
-                <th>&nbsp;</th>
+                <th>تقيم الطالب للدورة</th>
               </tr>
             </thead>
             <tbody>
@@ -60,26 +60,27 @@
                 $where = "WHERE title LIKE '%".$_POST['title']."%'";
                 }
                 $sql = "Select
-						  questionnaire.id,
-						  questionnaire.id,
-						  questionnaire.course_id,
-						  questionnaire.user_id,
-						  users.id As id1,
-						  users.id_number,
-						  users.first_name,
-						  users.father_name,
-						  users.grand_father_name,
-						  users.family_name,
-						  users.full_name,
-						  course.title,
-						  course.id As id2
-						From
-						  questionnaire Inner Join
-						  course
-							On questionnaire.course_id = course.id Inner Join
-						  users
-							On questionnaire.user_id = users.id";
+						   course.id AS couid,
+                            course.title AS coutitle,
+                            course.programs_id,
+                            course.status,
+							course.archive,
+                            course.day_count AS days, 
+                            
+                            programs.id AS prid,
+                            programs.title AS prtitle
+                            
+                            FROM
+                            `course`, `programs`
+                            WHERE
+                            programs_id=programs_id AND
+                            programs.id = course.programs_id AND
+							course.archive = 'no'
+							ORDER BY course.id ASC
+							LIMIT $startpoint , $limit
+							";
                     $ExecuteSql = $pdo->pdoExecute($sql);
+
 
 
 
@@ -96,26 +97,46 @@
                     } else {
 
                     $rows = $pdo->pdoGetAll($sql);
-                    
+
                     foreach($rows as $result) {
+                        $sql_is_insert = "SELECT * FROM `questionnaire` WHERE `course_id` =$result[couid]";
+                        $execsql_is_insert = $pdo->pdoExecute($sql_is_insert);
+                        $count= $pdo->pdoRowCount($execsql_is_insert);
                 ?>
+                       <?php if ($count>0) { ?>
                 <tr class="unread">
                         <td>
                         <div class="ckbox ckbox-success">
                         <input name="checkbox[]" type="checkbox" value="<?= $result['q1'] ?>" id="checkbox1<?= $result['id'] ?>">
                         <label for="checkbox1<?= $result['id'] ?>"></label>
+
                         </div>
 
                         </td>
-                <td>&nbsp;<?= $result['full_name'] ?></td>
-                <td>&nbsp;<?= $result['title'] ?></td>
-                <td class="table-action">
-                        <a href="?do=edit&id=<? echo $result['id'] ?>" title="تعديل" data-placement="top" data-toggle="tooltip" class="tooltips"><i class="fa fa-pencil"></i></a>
-                        <a href="?del=<? echo $result['id'] ?>" title="حذف" data-placement="top" data-toggle="tooltip" class="tooltips" onclick="return confirm('هل انت متأكد من عملية الحذف؟ هذا الأجراء لايمكن التراجع عنه بعد تنفيذه')"><i class="fa fa-trash-o"></i></a>
+                <td>&nbsp;<?= $result['coutitle'] ?></td>
+                <td>&nbsp;<?= $result['prtitle'] ?></td>
+                    <td><a href="../questionnairereport.php?course=<?= $result['couid'] ?>">عرض تقيم الدورة</a></td>
+<!--                <td class="table-action">-->
+<!--                        <a href="?do=edit&id=--><?// echo $result['id'] ?><!--" title="تعديل" data-placement="top" data-toggle="tooltip" class="tooltips"><i class="fa fa-pencil"></i></a>-->
+<!--                        <a href="?del=--><?// echo $result['id'] ?><!--" title="حذف" data-placement="top" data-toggle="tooltip" class="tooltips" onclick="return confirm('هل انت متأكد من عملية الحذف؟ هذا الأجراء لايمكن التراجع عنه بعد تنفيذه')"><i class="fa fa-trash-o"></i></a>-->
+<!---->
+<!--                </td>-->
+                        <?php }elseif($count==0){?>
+                            <td>
+                                <div class="ckbox ckbox-success">
+                                    <input name="checkbox[]" type="checkbox" value="<?= $result['q1'] ?>" id="checkbox1<?= $result['id'] ?>">
+                                    <label for="checkbox1<?= $result['id'] ?>"></label>
 
-                </td>
+                                </div>
+
+                            </td>
+                            <td>&nbsp;<?= $result['coutitle'] ?></td>
+                            <td>&nbsp;<?= $result['prtitle'] ?></td>
+                            <td><a href="../questionnaire.php?course=<?= $result['couid'] ?>">لم يتم تقيم الدورة بعد</a></td>
+                        <?} ?>
               </tr>
-                <? } } ?>
+
+                    <? } } ?>
                 
             </tbody>
           </table>
