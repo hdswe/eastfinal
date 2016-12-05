@@ -106,8 +106,11 @@
                                                 $excute_rating = $pdo->pdoExecute("SELECT * FROM `questionnaire` WHERE course_id=".$result['cid']." AND user_id=".$idUser."");
                                                 $rating = $pdo->pdoRowCount($excute_rating);
 
-                                                if($rating == 1) {
-                                                    echo 'غير متاح حاليا';
+                                                if ($count_day != $result['day_count']){
+                                                    echo 'غير متاح لك';
+                                                }
+                                                elseif($rating == 1) {
+                                                    echo 'قمت بتقيم الدورة';
                                                 } else {
                                                     echo '<a href="questionnaire.php?course='.$result['cid'].'">تقيم الدورة</a>';
                                                 }
