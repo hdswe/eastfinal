@@ -38,6 +38,7 @@
 						course.date_h ,
 						course.date_m,
 						course.day_hours,
+						course.day_section,
 						course.programs_id As prtitle ,
 						
 		                groups.title As gotitle,
@@ -68,6 +69,7 @@
 //    var_dump($rows) ;
 //    die();
 	foreach($rows as $result) {
+//      var_dump($rows);
 ?>
   <div class="card-cer">
 
@@ -78,7 +80,7 @@
     <div class="text-info">
       <p>تشهد الجمعية الخيرية لتحفيظ القرآن  الكريم بمركز الشرق</p>
       <p> بأن المشارك  / <span>
-        <?= $result['full_name']; ?>
+        <?= $result['full_name']; ?></span>
         </sapn>
       </p>
       <p> قد حضر دورة تدريبية بعنوان : <span> (
@@ -89,7 +91,7 @@
         </span> </p>
       <p> وذلك <span>
 
-        <?=  'مساء' ?>
+        <?=  $result['day_section'] ?>
         </span> يوم <span>
           <?php echo (new hijri\datetime($result['date_m']))->format('D'); ?>
         </span> الموافق <span>

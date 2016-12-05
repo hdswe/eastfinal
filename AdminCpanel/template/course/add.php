@@ -61,12 +61,19 @@
 
             <div class="form-group">
                 <label class="col-sm-2 control-label"> عدد الساعات اليومية</label>
-                <div class="col-sm-6">
+                <div class="col-sm-3">
                     <select name="day_hours" class="form-control">
                         <? for($i=1; $i<25; $i++) { ?>
                             <option value="<?= $i ?>"><?= $i ?></option>
                         <? } ?>
                         </select>
+
+                </div>
+                <div class="col-sm-3">
+                    <select name="day_section" class="form-control">
+                            <option value="مساء"><?= "مساء" ?></option>
+                            <option value="صباحا"><?= "صباحا" ?></option>
+                    </select>
 
                 </div>
             </div>

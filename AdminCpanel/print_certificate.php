@@ -118,6 +118,7 @@
                         course.title,
 						course.trainer,
 						course.time,
+						course.day_section,
 						course.date_h ,
 						course.date_m,
 						course.day_hours,
@@ -159,7 +160,7 @@
                     <div class="img-right-quran"> <img src="certificate/images/bg-card-cer-r-lg.png" alt="" /> </div>
                     <div class="text-info">
                         <p>تشهد الجمعية الخيرية لتحفيظ القرآن  الكريم بمركز الشرق</p>
-                        <p> بأن المشارك  / <span>
+                        <p> بأن المشارك  / <span></p>
         <?= $result['full_name']; ?>
                                 </sapn>
                         </p>
@@ -171,7 +172,7 @@
         </span> </p>
                         <p> وذلك <span>
 
-        <?=  'مساء' ?>
+        <?=  $result['day_section'] ?>
         </span> يوم <span>
           <?php echo (new hijri\datetime($result['date_m']))->format('D'); ?>
         </span> الموافق <span>
