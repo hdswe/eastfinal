@@ -80,7 +80,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="print_certificate.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="print_certificate.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AdminCpanel/print_certificate.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
@@ -105,17 +105,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="course.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="course.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AdminCpanel/course.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="97" column="29" selection-start-line="97" selection-start-column="29" selection-end-line="97" selection-end-column="29" />
+            <state relative-caret-position="14">
+              <caret line="99" column="34" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
               <folding>
-                <marker date="1480684912744" expanded="true" signature="6146:6181" placeholder="SELECT * FRO... course" />
-                <marker date="1480684912744" expanded="true" signature="11010:11045" placeholder="DELETE FROM " />
-                <marker date="1480684912744" expanded="true" signature="11704:11739" placeholder="DELETE FROM " />
-                <marker date="1480684912744" expanded="true" signature="13564:13603" placeholder="DELETE FROM " />
-                <marker date="1480684912744" expanded="true" signature="14285:14324" placeholder="DELETE FROM " />
+                <marker date="1480938036188" expanded="true" signature="6227:6262" placeholder="SELECT * FRO... course" />
+                <marker date="1480938036188" expanded="true" signature="11091:11126" placeholder="DELETE FROM " />
+                <marker date="1480938036188" expanded="true" signature="11785:11820" placeholder="DELETE FROM " />
+                <marker date="1480938036188" expanded="true" signature="13645:13684" placeholder="DELETE FROM " />
+                <marker date="1480938036188" expanded="true" signature="14366:14405" placeholder="DELETE FROM " />
               </folding>
             </state>
           </provider>
@@ -124,7 +124,7 @@
       <file leaf-file-name="show.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AdminCpanel/template/course/show.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
+            <state relative-caret-position="5">
               <caret line="70" column="20" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
               <folding>
                 <marker date="1480888948937" expanded="true" signature="1097:1159" placeholder="SELECT * FRO... programs" />
@@ -215,7 +215,6 @@
         <option value="$PROJECT_DIR$/AdminCpanel/settings.php" />
         <option value="$PROJECT_DIR$/AdminCpanel/barcode.php" />
         <option value="$PROJECT_DIR$/AdminCpanel/questionnaire.php" />
-        <option value="$PROJECT_DIR$/AdminCpanel/course.php" />
         <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/AdminCpanel/banned_report.php" />
         <option value="$PROJECT_DIR$/AdminCpanel/template/banned/banned.php" />
@@ -233,6 +232,7 @@
         <option value="$PROJECT_DIR$/AdminCpanel/template/course/add.php" />
         <option value="$PROJECT_DIR$/AdminCpanel/certificate/print.php" />
         <option value="$PROJECT_DIR$/AdminCpanel/print_certificate.php" />
+        <option value="$PROJECT_DIR$/AdminCpanel/course.php" />
       </list>
     </option>
   </component>
@@ -328,28 +328,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eastfinal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eastfinal" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="AdminCpanel" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="template" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="course" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -435,12 +413,12 @@
       <workItem from="1480709484406" duration="24594000" />
       <workItem from="1480790634849" duration="1234000" />
       <workItem from="1480799235340" duration="32132000" />
-      <workItem from="1480933057793" duration="3988000" />
+      <workItem from="1480933057793" duration="4803000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113885000" />
+    <option name="totallyTimeSpent" value="114700000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -620,6 +598,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1938">
           <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -822,24 +801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AdminCpanel/template/course/show.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="70" column="20" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
-          <folding>
-            <marker date="1480888948937" expanded="true" signature="1097:1159" placeholder="SELECT * FRO... programs" />
-            <marker date="1480888948937" expanded="true" signature="3544:3579" placeholder="SELECT cours... course" />
-            <marker date="1480888948937" expanded="true" signature="3544:4307" placeholder="SELECT cours... course" />
-            <marker date="1480888948937" expanded="true" signature="4541:4769" placeholder="..." />
-            <marker date="1480888948937" expanded="true" signature="4579:4743" placeholder="..." />
-            <marker date="1480888948937" expanded="true" signature="4637:4716" placeholder="..." />
-            <marker date="1480888948937" expanded="true" signature="5953:6017" placeholder="SELECT * FRO... day_course" />
-            <marker date="1480888948937" expanded="true" signature="6233:6244" placeholder="..." />
-            <marker date="1480888948937" expanded="true" signature="6284:6293" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/my_archive.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -860,31 +821,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AdminCpanel/course.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="97" column="29" selection-start-line="97" selection-start-column="29" selection-end-line="97" selection-end-column="29" />
-          <folding>
-            <marker date="1480684912744" expanded="true" signature="6146:6181" placeholder="SELECT * FRO... course" />
-            <marker date="1480684912744" expanded="true" signature="11010:11045" placeholder="DELETE FROM " />
-            <marker date="1480684912744" expanded="true" signature="11704:11739" placeholder="DELETE FROM " />
-            <marker date="1480684912744" expanded="true" signature="13564:13603" placeholder="DELETE FROM " />
-            <marker date="1480684912744" expanded="true" signature="14285:14324" placeholder="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AdminCpanel/template/course/add.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="72" column="45" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="45" />
-          <folding>
-            <marker date="1480937015763" expanded="true" signature="1205:1248" placeholder="SELECT * FRO... programs" />
-            <marker date="1480937015763" expanded="true" signature="1760:1800" placeholder="SELECT * FRO... groups" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AdminCpanel/certificate/print.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -901,6 +837,49 @@
           <caret line="174" column="33" selection-start-line="174" selection-start-column="33" selection-end-line="174" selection-end-column="33" />
           <folding>
             <marker date="1480937228165" expanded="true" signature="1977:3395" placeholder="SELECT reser... reservation" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AdminCpanel/template/course/add.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="72" column="45" selection-start-line="72" selection-start-column="34" selection-end-line="72" selection-end-column="45" />
+          <folding>
+            <marker date="1480937015763" expanded="true" signature="1205:1248" placeholder="SELECT * FRO... programs" />
+            <marker date="1480937015763" expanded="true" signature="1760:1800" placeholder="SELECT * FRO... groups" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AdminCpanel/template/course/show.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5">
+          <caret line="70" column="20" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
+          <folding>
+            <marker date="1480888948937" expanded="true" signature="1097:1159" placeholder="SELECT * FRO... programs" />
+            <marker date="1480888948937" expanded="true" signature="3544:3579" placeholder="SELECT cours... course" />
+            <marker date="1480888948937" expanded="true" signature="3544:4307" placeholder="SELECT cours... course" />
+            <marker date="1480888948937" expanded="true" signature="4541:4769" placeholder="..." />
+            <marker date="1480888948937" expanded="true" signature="4579:4743" placeholder="..." />
+            <marker date="1480888948937" expanded="true" signature="4637:4716" placeholder="..." />
+            <marker date="1480888948937" expanded="true" signature="5953:6017" placeholder="SELECT * FRO... day_course" />
+            <marker date="1480888948937" expanded="true" signature="6233:6244" placeholder="..." />
+            <marker date="1480888948937" expanded="true" signature="6284:6293" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AdminCpanel/course.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14">
+          <caret line="99" column="34" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
+          <folding>
+            <marker date="1480938036188" expanded="true" signature="6227:6262" placeholder="SELECT * FRO... course" />
+            <marker date="1480938036188" expanded="true" signature="11091:11126" placeholder="DELETE FROM " />
+            <marker date="1480938036188" expanded="true" signature="11785:11820" placeholder="DELETE FROM " />
+            <marker date="1480938036188" expanded="true" signature="13645:13684" placeholder="DELETE FROM " />
+            <marker date="1480938036188" expanded="true" signature="14366:14405" placeholder="DELETE FROM " />
           </folding>
         </state>
       </provider>

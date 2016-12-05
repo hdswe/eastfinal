@@ -97,6 +97,7 @@
                 $data['groups_id']              = implode(",",$_POST['groups_id']);
                 $data['day_count']              = trim($_POST['day_count']);
                 $data['day_hours']              = trim($_POST['day_hours']);
+                $data['day_section']              = trim($_POST['day_section']);
                 $data['date_h']		         = $_POST['date_h'];
                 $data['date_m']		         = $_POST['date_m'];
                 $data['time']		           = $_POST['time'];
