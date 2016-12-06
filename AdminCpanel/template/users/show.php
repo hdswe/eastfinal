@@ -129,7 +129,7 @@
                         </div>
                                                   
                         </td>
-                <td><a href="profile.php?id=<?= $result['userid'] ?>"><?= $result['first_name']." ".$result['middle_name']." ".$result['last_name'] ?></a></td>
+                <td><?= $result['first_name']." ".$result['middle_name']." ".$result['last_name'] ?></td>
                 <td><?= $result['username'] ?></td>
                 <td><?= $result['gender']?></td>
                 <td><?= $result['title']?></td>

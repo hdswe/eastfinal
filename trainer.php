@@ -14,94 +14,113 @@
 # Register User - Step2
 #############################################################
 	if (isset($_POST['btnsend'])) {
-		
+
+        $username = $_POST['mobile'];
+        $checkMobile = false;
+        $sqlUsername = "SELECT * FROM `trainer` WHERE `mobile`=:username";
+        $dataUsername[username] = $username;
+        $ExecuteSqlMob = $pdo->pdoExecute($sqlUsername, $dataUsername);
+        if($pdo->pdoRowCount($ExecuteSqlMob) < 1){
+
+        }else{
+            $msg = '<div class="alert alert-danger" role="alert">رقم الجوال المدخل موجود مسبقا</div>';
+            $checkMobile = true;
+        }
+
+        $email = $_POST['email'];
+        $sqlEmail = "SELECT * FROM `trainer` WHERE `email`=:email";
+        $checkEmail = false;
+        $dataEmail[email] = $email;
+        $ExecuteSql = $pdo->pdoExecute($sqlEmail, $dataEmail);
+        if($pdo->pdoRowCount($ExecuteSql) < 1){
+        }else{$msg = $msg . '<div class="alert alert-danger" role="alert">الايميل المدخل موجود مسبقا</div>';
+            $checkEmail = true;
+        }
         if (strtolower ( $_POST ['captcha'] ) != strtolower ( $_SESSION ['captcha'] )) {
-			$msg = '<div class="alert alert-danger" role="alert">خطأ في رمز التحقق</div>';
-        } else {
-		
-		if (($_FILES['fileattach']['name'] != "") && ($_FILES['picattach']['name'] != "")) {
-	
-			$maxSize = "9437184";
-			$PicmaxSize = "26214400";
-			$allowedExtensions = array("zip", "rar", "RAR", "ZIP", "pdf", "PDF", "doc", "DOC", "docx", "DOCX");
-			$allowedExtensionsPic = array("png", "PNG", "jpg", "JPG", "GIF", "gif","JPEG","jpeg");
-			$uploadedPic = $_FILES["picattach"]["name"];
-			$uploadedfile = $_FILES["fileattach"]["name"];
-			
-			strstr($_FILES["fileattach"]["type"], "file");
-			strstr($_FILES["picattach"]["type"], "file");
-			$splitedPicName = explode(".", $uploadedPic);
-			$splitedFileName = explode(".", $uploadedfile);
-			$type = $splitedFileName[sizeof($splitedFileName) - 1];
-			$Pictype = $splitedPicName[sizeof($splitedPicName) - 1];
-			$uploadedPic = time() . ".$Pictype";
-			$uploadedfile = time() . ".$type";
-			if ($_FILES['fileattach']['size'] > $maxSize) {
-				$msg = "يجب أن لايزيد حجم الملف المرفق عن 9 ميجا بايت";
-			}
-			if ($_FILES['picattach']['size'] > $PicmaxSize) {
-				$msg = "يجب أن لايزيد حجم الصورة المرفقة عن 25 ميجا بايت";
-			}
-			$extension = pathinfo($_FILES['fileattach']['name']);
-			$extension = $extension["extension"];
-			$Picextension = pathinfo($_FILES['picattach']['name']);
-			$Picextension = $Picextension["extension"];
-			foreach ($allowedExtensions as $key => $ext) {
-				if (strcasecmp($ext, $extension) == 0) {
-					$boolValidExt = true;
-					break;
-				}
-			}
-			foreach ($allowedExtensionsPic as $key => $ext) {
-				if (strcasecmp($ext, $Picextension) == 0) {
-					$boolValidExtPic = true;
-					break;
-				}
-			}
-			
-			if ($boolValidExt && $boolValidExtPic) {
-				if (empty($msg)) {
-					
-					if ((is_uploaded_file($_FILES['fileattach']['tmp_name']))&&(is_uploaded_file($_FILES['picattach']['tmp_name']))) {
-						
-						copy($_FILES['fileattach']['tmp_name'], "data/files/" . $uploadedfile);
-						copy($_FILES['picattach']['tmp_name'], "data/images/" . $uploadedPic);
-						
-				            $data['first_name']             = trim($_POST['first_name']);
-				            $data['father_name']            = trim($_POST['father_name']);
-				            $data['grand_father_name']      = trim($_POST['grand_father_name']);
-				            $data['family_name']            = trim($_POST['family_name']);
-				            $data['full_name']              = $_POST['first_name']." ".$_POST['father_name']." ".$_POST['grand_father_name']." ".$_POST['family_name'];
-				            $data['email']		          	= trim($_POST['email']);
-				            $data['mobile']		         	= trim($_POST['mobile']);
-				            $data['training']		      	= trim($_POST['training']);
-				            $data['additional_notes']	  	= trim($_POST['additional_notes']);
-				            $data['have_you_training']	   	= trim($_POST['have_you_training']);
-				            $data['institutions_trained']	= trim($_POST['institutions_trained']);
-				            $data['file_cv']		        = $uploadedfile;
-							$data['pic']		        	= $uploadedPic;
-				            $insert = $pdo->pdoInsUpd('trainer', $data);
-				            $isInsert = $pdo->pdoRowCount($insert);
-				            if($isInsert == 1){
-				                header('Location: ?do=successfully');
-				            } else {
-				                header('Location: ?do=failure');
-				            }
-						}
-			} 
-		}else{
-			
-			if(!$boolValidExt){
-				
-			    $msg = '<div class="alert alert-danger" role="alert">الملف يحمل الامتداد التالي '.$extension.' وهو غير مدعوم لدينا</div>';
-				
-			}
-			if(!$boolValidExtPic){
-				$msg = $msg.'<div class="alert alert-danger" role="alert">الصورة  يحمل الامتداد التالي '.$Picextension.' وهو غير مدعوم لدينا</div>';
-			
-			}
-		}
-	}else {
+            $msg = '<div class="alert alert-danger" role="alert">خطأ في رمز التحقق</div>';
+        } elseif (($_FILES['fileattach']['name'] != "") && ($_FILES['picattach']['name'] != "")) {
+
+                $maxSize = "9437184";
+                $PicmaxSize = "26214400";
+                $allowedExtensions = array("zip", "rar", "RAR", "ZIP", "pdf", "PDF", "doc", "DOC", "docx", "DOCX");
+                $allowedExtensionsPic = array("png", "PNG", "jpg", "JPG", "GIF", "gif","JPEG","jpeg");
+                $uploadedPic = $_FILES["picattach"]["name"];
+                $uploadedfile = $_FILES["fileattach"]["name"];
+
+                strstr($_FILES["fileattach"]["type"], "file");
+                strstr($_FILES["picattach"]["type"], "file");
+                $splitedPicName = explode(".", $uploadedPic);
+                $splitedFileName = explode(".", $uploadedfile);
+                $type = $splitedFileName[sizeof($splitedFileName) - 1];
+                $Pictype = $splitedPicName[sizeof($splitedPicName) - 1];
+                $uploadedPic = time() . ".$Pictype";
+                $uploadedfile = time() . ".$type";
+                if ($_FILES['fileattach']['size'] > $maxSize) {
+                    $msg = "يجب أن لايزيد حجم الملف المرفق عن 9 ميجا بايت";
+                }
+                if ($_FILES['picattach']['size'] > $PicmaxSize) {
+                    $msg = "يجب أن لايزيد حجم الصورة المرفقة عن 25 ميجا بايت";
+                }
+                $extension = pathinfo($_FILES['fileattach']['name']);
+                $extension = $extension["extension"];
+                $Picextension = pathinfo($_FILES['picattach']['name']);
+                $Picextension = $Picextension["extension"];
+                foreach ($allowedExtensions as $key => $ext) {
+                    if (strcasecmp($ext, $extension) == 0) {
+                        $boolValidExt = true;
+                        break;
+                    }
+                }
+                foreach ($allowedExtensionsPic as $key => $ext) {
+                    if (strcasecmp($ext, $Picextension) == 0) {
+                        $boolValidExtPic = true;
+                        break;
+                    }
+                }
+
+                if ($boolValidExt && $boolValidExtPic) {
+                    if (empty($msg)) {
+
+                        if ((is_uploaded_file($_FILES['fileattach']['tmp_name']))&&(is_uploaded_file($_FILES['picattach']['tmp_name']))) {
+
+                            copy($_FILES['fileattach']['tmp_name'], "data/files/" . $uploadedfile);
+                            copy($_FILES['picattach']['tmp_name'], "data/images/" . $uploadedPic);
+
+                                $data['first_name']             = trim($_POST['first_name']);
+                                $data['father_name']            = trim($_POST['father_name']);
+                                $data['grand_father_name']      = trim($_POST['grand_father_name']);
+                                $data['family_name']            = trim($_POST['family_name']);
+                                $data['full_name']              = $_POST['first_name']." ".$_POST['father_name']." ".$_POST['grand_father_name']." ".$_POST['family_name'];
+                                $data['email']		          	= trim($_POST['email']);
+                                $data['mobile']		         	= trim($_POST['mobile']);
+                                $data['training']		      	= trim($_POST['training']);
+                                $data['additional_notes']	  	= trim($_POST['additional_notes']);
+                                $data['have_you_training']	   	= trim($_POST['have_you_training']);
+                                $data['institutions_trained']	= trim($_POST['institutions_trained']);
+                                $data['file_cv']		        = $uploadedfile;
+                                $data['pic']		        	= $uploadedPic;
+                                $insert = $pdo->pdoInsUpd('trainer', $data);
+                                $isInsert = $pdo->pdoRowCount($insert);
+                                if($isInsert == 1){
+                                    header('Location: ?do=successfully');
+                                } else {
+                                    header('Location: ?do=failure');
+                                }
+                            }
+                }
+            }else{
+
+                if(!$boolValidExt){
+
+                    $msg = '<div class="alert alert-danger" role="alert">الملف يحمل الامتداد التالي '.$extension.' وهو غير مدعوم لدينا</div>';
+
+                }
+                if(!$boolValidExtPic){
+                    $msg = $msg.'<div class="alert alert-danger" role="alert">الصورة  يحمل الامتداد التالي '.$Picextension.' وهو غير مدعوم لدينا</div>';
+
+                }
+            }
+        }else {
 		if($_FILES['fileattach']['name'] == ""){
 			
 			$msg = '<div class="alert alert-danger" role="alert">يجب أن تقوم بارفاق السيرة الذاتية</div>';
@@ -113,7 +132,7 @@
 		}
 			
 		}
-	}
+
 	}
 
 ?>
