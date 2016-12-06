@@ -116,6 +116,7 @@
                         
                         course.id AS coid,
                         course.title,
+<<<<<<< HEAD
                         course.trainer,
                         course.time,
                         course.day_section,
@@ -129,6 +130,21 @@
                         programs.title As prtitle,
                         
                          
+=======
+						course.trainer,
+						course.time,
+						course.day_section,
+						course.date_h ,
+						course.date_m,
+						course.day_hours,
+						course.programs_id As prtitle ,
+						
+		                groups.title As gotitle,
+		                
+		                programs.title As prtitle,
+		                
+						 
+>>>>>>> origin/master
                         
                         users.id AS userid,
                         users.username,

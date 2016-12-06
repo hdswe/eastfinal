@@ -10,7 +10,11 @@ include('header.php');
 
 	$sql_is_insert = "SELECT * FROM `questionnaire` WHERE `course_id` = ".$_GET['course']."";
 	$execsql_is_insert = $pdo->pdoExecute($sql_is_insert);
+<<<<<<< HEAD
 
+=======
+    $count= $pdo->pdoRowCount($execsql_is_insert);
+>>>>>>> origin/master
 	if($pdo->pdoRowCount($execsql_is_insert) > 0) {
 		$table_show = 'yes';
 		$reslut = $pdo->pdoGetAll($sql_is_insert);
@@ -166,7 +170,11 @@ include('header.php');
         if($row['q17']=='نعم'){
           $reportq17 +=1;
 
+<<<<<<< HEAD
         }elseif  ($row['q17']=='لا'){
+=======
+        }elseif ($row['q17']=='لا'){
+>>>>>>> origin/master
           $reportqm17 +=1;
         }
         if($row['q18']=='نعم'){
@@ -178,19 +186,30 @@ include('header.php');
         if($row['q19']=='نعم'){
           $reportq19 +=1;
 
+<<<<<<< HEAD
         }elseif  ($row['q19']=='لا'){
+=======
+        }elseif ($row['q19']=='لا'){
+>>>>>>> origin/master
           $reportqm19 +=1;
         }
         if($row['q20']=='ممتاز'){
           $reportq20 +=1;
 
+<<<<<<< HEAD
         }elseif  ($row['q20']=='مقبول'){
+=======
+        }elseif ($row['q20']=='مقبول'){
+>>>>>>> origin/master
           $reportqm20 +=1;
         }
 
 
       }
+<<<<<<< HEAD
         var_dump(        $reportq1);
+=======
+>>>>>>> origin/master
     }
 
 	if(isset($_POST['btnsend'])) {
@@ -267,11 +286,15 @@ input[type="text"] {
 			if($_GET['process'] == 'successfully') {
 				echo '<p class="success">تم ارسال تقييمك بنجاح, شكرأ لك</p>';
 			}
+<<<<<<< HEAD
         echo '<p class="notice">قمت بتقييم هذه الدورة</p>';
+=======
+>>>>>>> origin/master
 		?>
         <br>
           <table class="table table-striped table-bordered">
   <tr>
+<<<<<<< HEAD
    
     <td colspan="2">اسم البرنامج</td>
     <td colspan="7"><?= $reslut_course['title'] ?></td>
@@ -305,10 +328,44 @@ input[type="text"] {
     <td colspan="2">إلمام    المدرب بموضوعات البرنامج</td>
     <td colspan="3"><?= $reportq1 ?> طلاب</td>
     <td colspan="2"><?= $reportqg1 ?> طلاب</td>
+=======
+    <td colspan="2" rowspan="4">
+
+      أخي المتدرب/ <?php echo $firstNameUser." ".$familyNameUser ?><br><br>
+      نحن مهتمون بتقييمك لتوفير التدريب الذي يلبي احتياجك،<br><br> فنأمل منك مشكوراً تعبئة النموذج بكل شفافية.</td>
+    <td colspan="2">اسم البرنامج</td>
+    <td colspan="6"><?= $reslut_course['title'] ?></td>
+  </tr>
+  <tr>
+    <td colspan="2">المدرب </td>
+    <td colspan="6"><?= $reslut_course['trainer'] ?></td>
+  </tr>
+  <tr>
+    <td colspan="2">الموعد </td>
+    <td colspan="6"><?= $reslut_course['date_h'] ?></td>
+  </tr>
+  <tr>
+    <td colspan="2">مكان البرنامج </td>
+    <td colspan="6"><?= $reslut_course['location'] ?></td>
+  </tr>
+  <tr class="active">
+    <th colspan="2">أولاً : تقييم المدرب</th>
+    <th>ممتاز</th>
+    <th>جيد</th>
+    <th colspan="2">مقبول</th>
+    <th colspan="4">(سبب اختيار مقبول)</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>إلمام    المدرب بموضوعات البرنامج</td>
+    <td><?= $reportq1 ?> طلاب</td>
+    <td><?= $reportqg1 ?> طلاب</td>
+>>>>>>> origin/master
     <td colspan="2"><?= $reportqm1 ?> طلاب</td>
   </tr>
   <tr>
     <td>2</td>
+<<<<<<< HEAD
     <td colspan="2">وضوح المادة العلمية المعروضة (الرسومات – الخط)</td>
     <td colspan="3"><?= $reportq2 ?> طلاب</td>
     <td colspan="2"><?= $reportqg2 ?> طلاب</td>
@@ -431,11 +488,150 @@ input[type="text"] {
     <td colspan="3"><?= $reportq16 ?> طلاب</td>
     <td colspan="2"><?= $reportqg16 ?> طلاب</td>
     <td colspan="2"><?= $reportqm16 ?> طلاب</td>
+=======
+    <td>وضوح المادة العلمية المعروضة (الرسومات – الخط)</td>
+    <td><?= $reportq2 ?> طلاب</td>
+    <td><?= $reportqg3 ?> طلاب</td>
+    <td colspan="2"><?= $reportqm4 ?> طلاب</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>قدرة المدرب على إدارة المداخلات والمناقشات</td>
+
+    <td><?= $reportq1 ?> طلاب</td>
+    <td><?= $reportqg1 ?> طلاب</td>
+    <td colspan="2"><?= $reportqm1 ?> طلاب</td> </tr>
+  <tr>
+    <td>4</td>
+    <td>قدرة المدرب على تحفيز المشاركين على التفاعل</td>
+    <td><input type="radio" name="q4" id="radio" value="ممتاز" <?= $reslut['q4'] == 'ممتاز' ? "checked='checked'" : '' ?>></td>
+    <td><input type="radio" name="q4" id="radio2" value="جيد" <?= $reslut['q4'] == 'جيد' ? "checked='checked'" : '' ?>></td>
+    <td colspan="2"><input type="radio" name="q4" id="radio3" value="مقبول" <?= $reslut['q4'] == 'مقبول' ? "checked='checked'" : '' ?>></td>
+    <td colspan="4"><input type="text" name="w4" id="w4" value="<?= $reslut['w4'] ?>"></td>
+    </tr>
+  <tr>
+    <td>5</td>
+    <td>مدى تعاونه مع المتدربين</td>
+    <td><input type="radio" name="q5" id="radio" value="ممتاز" <?= $reslut['q5'] == 'ممتاز' ? "checked='checked'" : '' ?>></td>
+    <td><input type="radio" name="q5" id="radio2" value="جيد" <?= $reslut['q5'] == 'جيد' ? "checked='checked'" : '' ?>></td>
+    <td colspan="2"><input type="radio" name="q5" id="radio3" value="مقبول" <?= $reslut['q5'] == 'مقبول' ? "checked='checked'" : '' ?>></td>
+    <td colspan="4"><input type="text" name="w5" id="w5" value="<?= $reslut['w5'] ?>"></td>
+    </tr>
+  <tr class="active">
+    <th colspan="2">ثانيًا : تقييم البرنامج التدريبي </th>
+    <th>ممتاز</th>
+    <th>جيد</th>
+    <th colspan="2">مقبول</th>
+    <th colspan="4">(سبب اختيار مقبول)</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>شمولية    مفردات الدورة للموضوع</td>
+    <td><input type="radio" name="q6" id="radio" value="ممتاز" <?= $reslut['q6'] == 'ممتاز' ? "checked='checked'" : '' ?>></td>
+    <td><input type="radio" name="q6" id="radio2" value="جيد" <?= $reslut['q6'] == 'جيد' ? "checked='checked'" : '' ?>></td>
+    <td colspan="2"><input type="radio" name="q6" id="radio3" value="مقبول" <?= $reslut['q6'] == 'مقبول' ? "checked='checked'" : '' ?>></td>
+    <td colspan="4"><input type="text" name="w6" id="w6" value="<?= $reslut['w6'] ?>"></td>
+    </tr>
+  <tr>
+    <td>2</td>
+    <td>حسن    الإخراج الفني للحقيبة التدريبية</td>
+    <td><input type="radio" name="q7" id="radio" value="ممتاز" <?= $reslut['q7'] == 'ممتاز' ? "checked='checked'" : '' ?>></td>
+    <td><input type="radio" name="q7" id="radio2" value="جيد" <?= $reslut['q7'] == 'جيد' ? "checked='checked'" : '' ?>></td>
+    <td colspan="2"><input type="radio" name="q7" id="radio3" value="مقبول" <?= $reslut['q7'] == 'مقبول' ? "checked='checked'" : '' ?>></td>
+    <td colspan="4"><input type="text" name="w7" id="w7" value="<?= $reslut['w7'] ?>"></td>
+    </tr>
+  <tr>
+    <td>3</td>
+    <td>كفاية مدة البرنامج (<?= $reslut_course['day_count'] ?>)</td>
+    <td><input type="radio" name="q8" id="radio" value="ممتاز" <?= $reslut['q8'] == 'ممتاز' ? "checked='checked'" : '' ?>></td>
+    <td><input type="radio" name="q8" id="radio2" value="جيد" <?= $reslut['q8'] == 'جيد' ? "checked='checked'" : '' ?>></td>
+    <td colspan="2"><input type="radio" name="q8" id="radio3" value="مقبول" <?= $reslut['q8'] == 'مقبول' ? "checked='checked'" : '' ?>></td>
+    <td colspan="4"><input type="text" name="w8" id="w8" value="<?= $reslut['w8'] ?>"></td>
+    </tr>
+  <tr>
+    <td>4</td>
+    <td>مكان    انعقاد البرنامج </td>
+    <td><input type="radio" name="q9" id="radio" value="ممتاز" <?= $reslut['q9'] == 'ممتاز' ? "checked='checked'" : '' ?>></td>
+    <td><input type="radio" name="q9" id="radio2" value="جيد" <?= $reslut['q9'] == 'جيد' ? "checked='checked'" : '' ?>></td>
+    <td colspan="2"><input type="radio" name="q9" id="radio3" value="مقبول" <?= $reslut['q9'] == 'مقبول' ? "checked='checked'" : '' ?>></td>
+    <td colspan="4"><input type="text" name="w9" id="w9" value="<?= $reslut['w9'] ?>"></td>
+    </tr>
+  <tr>
+    <td>5</td>
+    <td>توقيت    تنفيذ البرنامج  <?= $reslut_course['time'] ?></td>
+    <td><input type="radio" name="q10" id="radio" value="ممتاز" <?= $reslut['q10'] == 'ممتاز' ? "checked='checked'" : '' ?>></td>
+    <td><input type="radio" name="q10" id="radio2" value="جيد" <?= $reslut['q10'] == 'جيد' ? "checked='checked'" : '' ?>></td>
+    <td colspan="2"><input type="radio" name="q10" id="radio3" value="مقبول" <?= $reslut['q10'] == 'مقبول' ? "checked='checked'" : '' ?>></td>
+    <td colspan="4"><input type="text" name="w10" id="w10" value="<?= $reslut['w10'] ?>"></td>
+    </tr>
+  <tr>
+    <td>6</td>
+    <td>مناسبة    موضوع الدورة للحضور</td>
+    <td><input type="radio" name="q11" id="radio" value="ممتاز" <?= $reslut['q11'] == 'ممتاز' ? "checked='checked'" : '' ?>></td>
+    <td><input type="radio" name="q11" id="radio2" value="جيد" <?= $reslut['q11'] == 'جيد' ? "checked='checked'" : '' ?>></td>
+    <td colspan="2"><input type="radio" name="q11" id="radio3" value="مقبول" <?= $reslut['q11'] == 'مقبول' ? "checked='checked'" : '' ?>></td>
+    <td colspan="4"><input type="text" name="w11" id="w11" value="<?= $reslut['w11'] ?>"></td>
+    </tr>
+  <tr class="active">
+    <th colspan="2">ثالثًا : خدمة المتدربين </th>
+    <th>ممتاز</th>
+    <th>جيد</th>
+    <th colspan="2">مقبول</th>
+    <th colspan="4">(سبب اختيار مقبول)</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>المتابعة    والقدرة على تقديم المعلومات هاتفيا</td>
+    <td><input type="radio" name="q12" id="radio" value="ممتاز" <?= $reslut['q12'] == 'ممتاز' ? "checked='checked'" : '' ?>></td>
+    <td><input type="radio" name="q12" id="radio2" value="جيد" <?= $reslut['q12'] == 'جيد' ? "checked='checked'" : '' ?>></td>
+    <td colspan="2"><input type="radio" name="q12" id="radio3" value="مقبول" <?= $reslut['q12'] == 'مقبول' ? "checked='checked'" : '' ?>></td>
+    <td colspan="4"><input type="text" name="w12" id="w12" value="<?= $reslut['w12'] ?>"></td>
+    </tr>
+  <tr>
+    <td>2</td>
+    <td>جودة    الضيافة </td>
+    <td><input type="radio" name="q13" id="radio" value="ممتاز" <?= $reslut['q13'] == 'ممتاز' ? "checked='checked'" : '' ?>></td>
+    <td><input type="radio" name="q13" id="radio2" value="جيد" <?= $reslut['q13'] == 'جيد' ? "checked='checked'" : '' ?>></td>
+    <td colspan="2"><input type="radio" name="q13" id="radio3" value="مقبول" <?= $reslut['q13'] == 'مقبول' ? "checked='checked'" : '' ?>></td>
+    <td colspan="4"><input type="text" name="w13" id="w13" value="<?= $reslut['w13'] ?>"></td>
+    </tr>
+  <tr>
+    <td>3</td>
+    <td>حسن    الاستقبال والتسجيل</td>
+    <td><input type="radio" name="q14" id="radio" value="ممتاز" <?= $reslut['q14'] == 'ممتاز' ? "checked='checked'" : '' ?>></td>
+    <td><input type="radio" name="q14" id="radio2" value="جيد" <?= $reslut['q14'] == 'جيد' ? "checked='checked'" : '' ?>></td>
+    <td colspan="2"><input type="radio" name="q14" id="radio3" value="مقبول" <?= $reslut['q14'] == 'مقبول' ? "checked='checked'" : '' ?>></td>
+    <td colspan="4"><input type="text" name="w14" id="w14" value="<?= $reslut['w14'] ?>"></td>
+    </tr>
+  <tr class="active">
+    <th colspan="2">رابعاً :  البيئة التدريبية والخدمات المساندة  </th>
+    <th>ممتاز</th>
+    <th>جيد</th>
+    <th colspan="2">مقبول</th>
+    <th colspan="4">(سبب اختيار مقبول)</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>تكامل    تجهيزات القاعة وسلامتها</td>
+    <td><input type="radio" name="q15" id="radio" value="ممتاز" <?= $reslut['q15'] == 'ممتاز' ? "checked='checked'" : '' ?>></td>
+    <td><input type="radio" name="q15" id="radio2" value="جيد" <?= $reslut['q15'] == 'جيد' ? "checked='checked'" : '' ?>></td>
+    <td colspan="2"><input type="radio" name="q15" id="radio3" value="مقبول" <?= $reslut['q15'] == 'مقبول' ? "checked='checked'" : '' ?>></td>
+    <td colspan="4"><input type="text" name="w15" id="w15" value="<?= $reslut['w15'] ?>"></td>
+    </tr>
+  <tr>
+    <td>2</td>
+    <td>وضوح    رسالة  إعلان الدورة  </td>
+    <td><input type="radio" name="q16" id="radio" value="ممتاز" <?= $reslut['q16'] == 'ممتاز' ? "checked='checked'" : '' ?>></td>
+    <td><input type="radio" name="q16" id="radio2" value="جيد" <?= $reslut['q16'] == 'جيد' ? "checked='checked'" : '' ?>></td>
+    <td colspan="2"><input type="radio" name="q16" id="radio3" value="مقبول" <?= $reslut['q16'] == 'مقبول' ? "checked='checked'" : '' ?>></td>
+    <td colspan="4"><input type="text" name="w16" id="w16" value="<?= $reslut['w16'] ?>"></td>
+>>>>>>> origin/master
     </tr>
   <tr>
     <td colspan="10">خامساً: أسئلة عامة </td>
   </tr>
   <tr>
+<<<<<<< HEAD
     <td>17</td>
     <td colspan="2">هل وضعت أهداف للبرنامج</td>
     <td colspan="2">نعم </td>
@@ -467,6 +663,38 @@ input[type="text"] {
     <td><?= $reportq20 ?> طلاب</td>
     <td colspan="2">ممتاز </td>
     <td colspan="2"><?= $reportqm20 ?> طلاب</td>
+=======
+    <td>1</td>
+    <td colspan="4">هل وضعت أهداف للبرنامج</td>
+    <td colspan="2">نعم </td>
+    <td><input type="radio" name="q17" id="radio4" value="نعم" <?= $reslut['q17'] == 'نعم' ? "checked='checked'" : '' ?>></td>
+    <td>لا</td>
+    <td><input type="radio" name="q17" id="radio5" value="لا" <?= $reslut['q17'] == 'لا' ? "checked='checked'" : '' ?>></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td colspan="4">هل تحققت أهدافك ؟</td>
+    <td colspan="2">نعم </td>
+    <td><input type="radio" name="q18" id="radio7" value="نعم" <?= $reslut['q18'] == 'نعم' ? "checked='checked'" : '' ?>></td>
+    <td>لا</td>
+    <td><input type="radio" name="q18" id="radio6" value="لا" <?= $reslut['q18'] == 'لا' ? "checked='checked'" : '' ?>></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td colspan="4">هل تعتقد أن البرنامج سيساعدك في تطوير    مهاراتك مستقبلاً؟</td>
+    <td colspan="2">نعم </td>
+    <td><input type="radio" name="q19" id="radio8" value="نعم" <?= $reslut['q19'] == 'نعم' ? "checked='checked'" : '' ?>></td>
+    <td>لا</td>
+    <td><input type="radio" name="q19" id="radio9" value="لا" <?= $reslut['q19'] == 'لا' ? "checked='checked'" : '' ?>></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td colspan="4">ما هو تقييمك العام عن الدورة </td>
+    <td colspan="2">ممتاز </td>
+    <td><input type="radio" name="q20" id="radio11" value="ممتاز" <?= $reslut['q20'] == 'ممتاز' ? "checked='checked'" : '' ?>></td>
+    <td>مقبول</td>
+    <td><input type="radio" name="q20" id="radio10" value="مقبول" <?= $reslut['q20'] == 'مقبول' ? "checked='checked'" : '' ?>></td>
+>>>>>>> origin/master
   </tr>
 </table>
 <? } ?>

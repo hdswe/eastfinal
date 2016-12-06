@@ -100,6 +100,10 @@
                                                 <?php
                                                 $excute_rating = $pdo->pdoExecute("SELECT * FROM `questionnaire` WHERE course_id=".$result['cid']." AND user_id=".$idUser."");
                                                 $rating = $pdo->pdoRowCount($excute_rating);
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
                                                 if ($count_day != $result['day_count']){
                                                     echo 'غير متاح لك';
                                                 }

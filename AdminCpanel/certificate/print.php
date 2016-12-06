@@ -33,6 +33,7 @@
                         
                         course.id AS coid,
                         course.title,
+<<<<<<< HEAD
             course.trainer,
             course.time,
             course.date_h ,
@@ -46,6 +47,21 @@
                     programs.title As prtitle,
                     
              
+=======
+						course.trainer,
+						course.time,
+						course.date_h ,
+						course.date_m,
+						course.day_hours,
+						course.day_section,
+						course.programs_id As prtitle ,
+						
+		                groups.title As gotitle,
+		                
+		                programs.title As prtitle,
+		                
+						 
+>>>>>>> origin/master
                         
                         users.id AS userid,
                         users.username,
@@ -68,7 +84,11 @@
   $rows = $pdo->pdoGetAll($sql);
 //    var_dump($rows) ;
 //    die();
+<<<<<<< HEAD
   foreach($rows as $result) {
+=======
+	foreach($rows as $result) {
+>>>>>>> origin/master
 //      var_dump($rows);
 ?>
   <div class="card-cer">

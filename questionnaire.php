@@ -11,7 +11,11 @@
 	$sql_is_insert = "SELECT * FROM `questionnaire` WHERE `course_id` = ".$_GET['course']." ";
 
 	$execsql_is_insert = $pdo->pdoExecute($sql_is_insert);
+<<<<<<< HEAD
 //	if($pdo->pdoRowCount($execsql_is_insert) > 0) {
+=======
+	if($pdo->pdoRowCount($execsql_is_insert) > 0) {
+>>>>>>> origin/master
 		$table_show = 'yes';
 		$reslut = $pdo->pdoGetRow($sql_is_insert);
 //	}
@@ -123,7 +127,7 @@ input[type="text"] {
   <tr>
     <td>1</td>
     <td>إلمام    المدرب بموضوعات البرنامج</td>
-    <td><input type="radio" name="q1" id="radio" value="ممتاز" <?= $reslut['q1'] == 'ممتاز' ? "checked='checked'" : '' ?>></td>
+    <td><input required type="radio" name="q1" id="radio" value="ممتاز" <?= $reslut['q1'] == 'ممتاز' ? "checked='checked'" : '' ?>></td>
     <td><input type="radio" name="q1" id="radio2" value="جيد" <?= $reslut['q1'] == 'جيد' ? "checked='checked'" : '' ?>></td>
     <td colspan="2"><input type="radio" name="q1" id="radio3" value="مقبول" <?= $reslut['q1'] == 'مقبول' ? "checked='checked'" : '' ?>></td>
     <td colspan="4"><input name="w1" type="text" id="w1" value="<?= $reslut['w1'] ?>"></td>

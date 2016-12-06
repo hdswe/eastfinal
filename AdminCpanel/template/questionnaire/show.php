@@ -63,11 +63,19 @@
                 $where = "WHERE title LIKE '%".$_POST['title']."%'";
                 }
                 $sql = "Select
+<<<<<<< HEAD
                course.id AS couid,
                             course.title AS coutitle,
                             course.programs_id,
                             course.status,
               course.archive,
+=======
+						   course.id AS couid,
+                            course.title AS coutitle,
+                            course.programs_id,
+                            course.status,
+							course.archive,
+>>>>>>> origin/master
                             course.day_count AS days, 
                             
                             programs.id AS prid,
@@ -78,10 +86,17 @@
                             WHERE
                             programs_id=programs_id AND
                             programs.id = course.programs_id AND
+<<<<<<< HEAD
               course.archive = 'no'
               ORDER BY course.id ASC
               LIMIT $startpoint , $limit
               ";
+=======
+							course.archive = 'no'
+							ORDER BY course.id ASC
+							LIMIT $startpoint , $limit
+							";
+>>>>>>> origin/master
                     $ExecuteSql = $pdo->pdoExecute($sql);
 
 

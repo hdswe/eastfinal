@@ -13,7 +13,11 @@
 #############################################################
 # Register User - Step2
 #############################################################
+<<<<<<< HEAD
   if (isset($_POST['btnsend'])) {
+=======
+	if (isset($_POST['btnsend'])) {
+>>>>>>> origin/master
 
         $username = $_POST['mobile'];
         $checkMobile = false;
@@ -91,6 +95,7 @@
                                 $data['grand_father_name']      = trim($_POST['grand_father_name']);
                                 $data['family_name']            = trim($_POST['family_name']);
                                 $data['full_name']              = $_POST['first_name']." ".$_POST['father_name']." ".$_POST['grand_father_name']." ".$_POST['family_name'];
+<<<<<<< HEAD
                                 $data['email']                = trim($_POST['email']);
                                 $data['mobile']             = trim($_POST['mobile']);
                                 $data['training']           = trim($_POST['training']);
@@ -99,6 +104,16 @@
                                 $data['institutions_trained'] = trim($_POST['institutions_trained']);
                                 $data['file_cv']            = $uploadedfile;
                                 $data['pic']              = $uploadedPic;
+=======
+                                $data['email']		          	= trim($_POST['email']);
+                                $data['mobile']		         	= trim($_POST['mobile']);
+                                $data['training']		      	= trim($_POST['training']);
+                                $data['additional_notes']	  	= trim($_POST['additional_notes']);
+                                $data['have_you_training']	   	= trim($_POST['have_you_training']);
+                                $data['institutions_trained']	= trim($_POST['institutions_trained']);
+                                $data['file_cv']		        = $uploadedfile;
+                                $data['pic']		        	= $uploadedPic;
+>>>>>>> origin/master
                                 $insert = $pdo->pdoInsUpd('trainer', $data);
                                 $isInsert = $pdo->pdoRowCount($insert);
                                 if($isInsert == 1){
@@ -121,6 +136,7 @@
                 }
             }
         }else {
+<<<<<<< HEAD
     if($_FILES['fileattach']['name'] == ""){
       
       $msg = '<div class="alert alert-danger" role="alert">يجب أن تقوم بارفاق السيرة الذاتية</div>';
@@ -134,6 +150,21 @@
     }
 
   }
+=======
+		if($_FILES['fileattach']['name'] == ""){
+			
+			$msg = '<div class="alert alert-danger" role="alert">يجب أن تقوم بارفاق السيرة الذاتية</div>';
+			
+		} if($_FILES['picattach']['name'] == ""){
+			
+			$msg =$msg .'<div class="alert alert-danger" role="alert">يجب أن تقوم بارفاق الصورة شخصية</div>';
+			
+		}
+			
+		}
+
+	}
+>>>>>>> origin/master
 
 ?>
 

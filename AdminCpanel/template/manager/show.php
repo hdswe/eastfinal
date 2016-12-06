@@ -88,7 +88,11 @@
                         </div>
                                                   
                         </td>
+<<<<<<< HEAD
                  <td><?= $result['first_name']." ".$result['middle_name']." ".$result['last_name'] ?></td>
+=======
+                <td><?= $result['first_name']." ".$result['middle_name']." ".$result['last_name'] ?></td>
+>>>>>>> origin/master
                 <td><?= $result['username'] ?></td>
                 <td><?= $result['email'] ?></td>
                 <td><?= $result['gender']?></td>

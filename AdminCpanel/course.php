@@ -98,11 +98,19 @@
                 $data['day_count']              = trim($_POST['day_count']);
                 $data['day_hours']              = trim($_POST['day_hours']);
                 $data['day_section']              = trim($_POST['day_section']);
+<<<<<<< HEAD
                 $data['date_h']              = $_POST['date_h'];
                 $data['date_m']              = $_POST['date_m'];
                 $data['time']                  = $_POST['time'];
                 $data['trainer']                = trim($_POST['trainer']);
                 $data['location']               = trim($_POST['location']);
+=======
+                $data['date_h']		         = $_POST['date_h'];
+                $data['date_m']		         = $_POST['date_m'];
+                $data['time']		           = $_POST['time'];
+                $data['trainer']	            = trim($_POST['trainer']);
+                $data['location']	            = trim($_POST['location']);
+>>>>>>> origin/master
                 $data['dependence_date']        = $_POST['dependence_date'];
                 $data['dependence_number']      = $_POST['dependence_number'];
                 $data['details']                = $_POST['details'];
