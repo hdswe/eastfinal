@@ -184,7 +184,7 @@
             <label>المسجد /  الجامع</label>
             <?php if($settingsMenuMosque == 'yes') { ?>
             <select name="mosque_id" required  id="mosque_id" class="form-control" onchange="try{setCustomValidity('')}catch(e){}" oninvalid="setCustomValidity('يجب اختيار المسمى الوظيفي')">
-              <option>--- أختر ----</option>
+              <option disabled selected value>--- أختر ----</option>
               <?php
                                             $sql = "SELECT * FROM `mosque` ORDER BY `id` ASC";
                                             $rows = $pdo->pdoGetAll($sql);
@@ -206,7 +206,7 @@
             <label>المركز</label>
             <?php if($settingsMenuCenter == 'yes') { ?>
             <select name="center_id" required  id="center_id" class="form-control" onchange="try{setCustomValidity('')}catch(e){}" oninvalid="setCustomValidity('يجب اختيار المركز')">
-              <option>--- أختر ----</option>
+              <option disabled selected value>--- أختر ----</option>
               <?php
                 $sql = "SELECT * FROM `center` ORDER BY `id` ASC";
                 $rows = $pdo->pdoGetAll($sql);
@@ -228,7 +228,7 @@
             <label>الحي</label>
             <?php if($settingsMenuNeighborhood == 'yes') { ?>
             <select name="neighborhood_id" required class="form-control" id="neighborhood_id" onchange="try{setCustomValidity('')}catch(e){}" oninvalid="setCustomValidity('يجب اختيار الحي')">
-              <option>--- أختر ----</option>
+              <option disabled selected value>--- أختر ----</option>
               <?php
                             $sql = "SELECT * FROM `neighborhood` ORDER BY `id` ASC";
                             $rows = $pdo->pdoGetAll($sql);
@@ -249,7 +249,7 @@
           <div class="form-group">
             <label>المسمى الوظيفي </label>
             <select name="groups_id" required class="form-control" id="groups_id">
-              <option>--- أختر ----</option>
+              <option disabled selected value>--- أختر ----</option>
               <?php
                     $sql = "SELECT * FROM `groups` ORDER BY `id` ASC";
                     $rows = $pdo->pdoGetAll($sql);
@@ -270,7 +270,7 @@
           <div class="form-group">
             <label>الجنس</label>
             <select name="gender" required  id="gender" class="form-control" onchange="try{setCustomValidity('')}catch(e){}" oninvalid="setCustomValidity('يجب اختيار الجنس')">
-              <option>--- أختر ----</option>
+              <option disabled selected value>--- أختر ----</option>
               <option value="ذكر">ذكر</option>
               <option value="انثى">انثى</option>
             </select>
@@ -278,7 +278,7 @@
           <div class="form-group">
             <label>المؤهل العلمي </label>
             <select name="qualification" required  id="qualification" class="form-control" onchange="try{setCustomValidity('')}catch(e){}" oninvalid="setCustomValidity('يجب أختيار المؤهل')">
-              <option>--- أختر ----</option>
+              <option disabled selected value>--- أختر ----</option>
               <option value="ثانوي">ثانوي</option>
               <option value="دبلوم">دبلوم</option>
               <option value="بكالوريوس">بكالوريوس</option>

@@ -32,23 +32,23 @@
 }
 
 .page {
-		margin:0px;
+        margin:0px;
 
-	padding:0px;
-	background: url(images/certfcate.jpg) no-repeat left top;
+    padding:0px;
+    background: url(images/certfcate.jpg) no-repeat left top;
 }
 .page table {
-	width: 95%;
+    width: 95%;
 }
 
 .page th {
-	background-color: #DBDBDB;
-	padding: 5px;
-	text-align: center;
-	border: 1px solid #000;
-	font-family: arial;
-	font-size: 16px;
-	font-weight: bold;
+    background-color: #DBDBDB;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #000;
+    font-family: arial;
+    font-size: 16px;
+    font-weight: bold;
 }
 .page td {
     border: 1px solid #000000;
@@ -58,11 +58,11 @@
     padding: 10px;}
 
 .print {
-	font-family: "Arial Black", Gadget, sans-serif;
-	font-size: 24px;
-	margin-top: 30px;
-	display:block;
-	margin-left:120px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 24px;
+    margin-top: 30px;
+    display:block;
+    margin-left:120px;
 }
 
 @media print
@@ -75,17 +75,17 @@
 
 
 .none table {
-	width: 95%;
+    width: 95%;
 }
 
 .none th {
-	background-color: #fff;
-	padding: 5px;
-	text-align: center;
-	border: 1px solid #fff;
-	font-family: arial;
-	font-size: 16px;
-	font-weight: bold;
+    background-color: #fff;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #fff;
+    font-family: arial;
+    font-size: 16px;
+    font-weight: bold;
 }
 .none td {
     border: 1px solid #fff;
@@ -105,7 +105,7 @@
 </a>
 -->
 <?
-	$course = $_GET['id'];
+    $course = $_GET['id'];
 
                 $sql = "SELECT 
                         reservation.id AS resid,
@@ -116,18 +116,19 @@
                         
                         course.id AS coid,
                         course.title,
-						course.trainer,
-						course.time,
-						course.date_h ,
-						course.date_m,
-						course.day_hours,
-						course.programs_id As prtitle ,
-						
-		                groups.title As gotitle,
-		                
-		                programs.title As prtitle,
-		                
-						 
+                        course.trainer,
+                        course.time,
+                        course.day_section,
+                        course.date_h ,
+                        course.date_m,
+                        course.day_hours,
+                        course.programs_id As prtitle ,
+                        
+                        groups.title As gotitle,
+                        
+                        programs.title As prtitle,
+                        
+                         
                         
                         users.id AS userid,
                         users.username,
@@ -142,7 +143,7 @@
                         groups.id = users.groups_id AND
                         programs.id = course.programs_id AND
                         reservation.status = '2' AND
-						reservation.course_id = ".$_GET['course_id']."
+                        reservation.course_id = ".$_GET['course_id']."
                         
                         ORDER BY `resid` DESC
                                             ";
@@ -159,7 +160,7 @@
                     <div class="img-right-quran"> <img src="certificate/images/bg-card-cer-r-lg.png" alt="" /> </div>
                     <div class="text-info">
                         <p>تشهد الجمعية الخيرية لتحفيظ القرآن  الكريم بمركز الشرق</p>
-                        <p> بأن المشارك  / <span>
+                        <p> بأن المشارك  / <span></p>
         <?= $result['full_name']; ?>
                                 </sapn>
                         </p>
@@ -171,7 +172,7 @@
         </span> </p>
                         <p> وذلك <span>
 
-        <?=  'مساء' ?>
+        <?=  $result['day_section'] ?>
         </span> يوم <span>
           <?php echo (new hijri\datetime($result['date_m']))->format('D'); ?>
         </span> الموافق <span>
@@ -199,7 +200,7 @@
                         </div>
                     </footer>
                 </div>
-<?	} ?>
+<?  } ?>
 
 <script src="js/bootstrap.min.js"></script>
 </body>

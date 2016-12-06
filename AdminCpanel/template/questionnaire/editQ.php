@@ -1,3 +1,6 @@
+<style>
+  .form-control {height: 45px;} 
+</style>
 <?
 	$sql = "SELECT * FROM `questionsOfquestionnair` where id=:id";
     $data[id] = $_GET['idq'];

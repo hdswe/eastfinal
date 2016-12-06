@@ -33,18 +33,19 @@
                         
                         course.id AS coid,
                         course.title,
-						course.trainer,
-						course.time,
-						course.date_h ,
-						course.date_m,
-						course.day_hours,
-						course.programs_id As prtitle ,
-						
-		                groups.title As gotitle,
-		                
-		                programs.title As prtitle,
-		                
-						 
+            course.trainer,
+            course.time,
+            course.date_h ,
+            course.date_m,
+            course.day_hours,
+            course.day_section,
+            course.programs_id As prtitle ,
+            
+                    groups.title As gotitle,
+                    
+                    programs.title As prtitle,
+                    
+             
                         
                         users.id AS userid,
                         users.username,
@@ -59,15 +60,16 @@
                         groups.id = users.groups_id AND
                         programs.id = course.programs_id AND
                         reservation.status = '2' AND
-						reservation.course_id = ".$_GET['course_id']."
+            reservation.course_id = ".$_GET['course_id']."
                         
                         ORDER BY `resid` DESC
                         
                     ";
-	$rows = $pdo->pdoGetAll($sql);
+  $rows = $pdo->pdoGetAll($sql);
 //    var_dump($rows) ;
 //    die();
-	foreach($rows as $result) {
+  foreach($rows as $result) {
+//      var_dump($rows);
 ?>
   <div class="card-cer">
 
@@ -78,7 +80,7 @@
     <div class="text-info">
       <p>تشهد الجمعية الخيرية لتحفيظ القرآن  الكريم بمركز الشرق</p>
       <p> بأن المشارك  / <span>
-        <?= $result['full_name']; ?>
+        <?= $result['full_name']; ?></span>
         </sapn>
       </p>
       <p> قد حضر دورة تدريبية بعنوان : <span> (
@@ -89,7 +91,7 @@
         </span> </p>
       <p> وذلك <span>
 
-        <?=  'مساء' ?>
+        <?=  $result['day_section'] ?>
         </span> يوم <span>
           <?php echo (new hijri\datetime($result['date_m']))->format('D'); ?>
         </span> الموافق <span>

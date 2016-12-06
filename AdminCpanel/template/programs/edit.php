@@ -1,3 +1,6 @@
+<style>
+  .form-control {height: 45px;} 
+</style>
 ?<form method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
 <?php $addToken = new Token; $addToken->protectForm(); ?> 
 <div class="panel panel-default">

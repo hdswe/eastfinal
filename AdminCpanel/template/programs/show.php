@@ -1,3 +1,6 @@
+<style>
+  .form-control {height: 45px;} 
+</style>
 <div class="panel panel-default">
         <div class="panel-heading">
           <div class="panel-btns">

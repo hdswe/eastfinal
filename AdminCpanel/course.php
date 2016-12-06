@@ -21,55 +21,55 @@
 #############################################################
     if($_FILES['fileimage']['name'] != ""){
         $maxSize = "7048576";
-		$allowedExtensions = array("jpg", "JPG", "JPEG", "png", "PNG", "BMP", "bmp");
+        $allowedExtensions = array("jpg", "JPG", "JPEG", "png", "PNG", "BMP", "bmp");
 
-		$uploadedfileimage = $_FILES["fileimage"]["name"];
-		strstr($_FILES["fileimage"]["type"],"image");
-		$splitedImageName=explode(".",$uploadedfileimage);
-		$type=$splitedImageName[sizeof($splitedImageName)-1];
-		$uploadedfileimage=time().".$type";
+        $uploadedfileimage = $_FILES["fileimage"]["name"];
+        strstr($_FILES["fileimage"]["type"],"image");
+        $splitedImageName=explode(".",$uploadedfileimage);
+        $type=$splitedImageName[sizeof($splitedImageName)-1];
+        $uploadedfileimage=time().".$type";
         if($_FILES['fileimage']['size'] > $maxSize){
             $error = "File size cannot exceed 1MB";
         }
-		$extension = pathinfo($_FILES['fileimage']['name']);
-		$extension = $extension["extension"];
-		foreach($allowedExtensions as $key=>$ext) {
-			if(strcasecmp($ext, $extension) == 0){
-				$boolValidExt = true;
-				break;
-			}
-		}
-		if($boolValidExt) {
-			if(empty($error)) {
-				if(is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
-					copy($_FILES['fileimage']['tmp_name'], "../data/images/" . $uploadedfileimage);
-				}
-			}
-		}
-		else
-		{
-			$error = "Files with .$extension extensions are not allowed";
-		}
-		if(empty($error))
-		{
-			$srcFile = "../data/images/" . $uploadedfileimage;
-			$destFile_thumbs = "../data/thumbs/" . $uploadedfileimage;
-			$destFile_orignal = "../data/images/" . $uploadedfileimage;
+        $extension = pathinfo($_FILES['fileimage']['name']);
+        $extension = $extension["extension"];
+        foreach($allowedExtensions as $key=>$ext) {
+            if(strcasecmp($ext, $extension) == 0){
+                $boolValidExt = true;
+                break;
+            }
+        }
+        if($boolValidExt) {
+            if(empty($error)) {
+                if(is_uploaded_file($_FILES['fileimage']['tmp_name'])) {
+                    copy($_FILES['fileimage']['tmp_name'], "../data/images/" . $uploadedfileimage);
+                }
+            }
+        }
+        else
+        {
+            $error = "Files with .$extension extensions are not allowed";
+        }
+        if(empty($error))
+        {
+            $srcFile = "../data/images/" . $uploadedfileimage;
+            $destFile_thumbs = "../data/thumbs/" . $uploadedfileimage;
+            $destFile_orignal = "../data/images/" . $uploadedfileimage;
 
             $resizeObj = new resize($srcFile);
-            $resizeObj -> resizeImage(180, 120, 'crop');		
+            $resizeObj -> resizeImage(180, 120, 'crop');        
             $resizeObj -> saveImage($destFile_thumbs, 100);
     
             $resizeObja = new resize($srcFile);
-            $resizeObja -> resizeImage(450, 'landscape');		
+            $resizeObja -> resizeImage(450, 'landscape');       
             $resizeObja -> saveImage($destFile_orignal, 100);
-		
-			unset($resizeObj);
-		}		
-	} else {
-		$old_uploadedfileimage = $_POST['images_old'];
-		$uploadedfileimage = $old_uploadedfileimage;
-	}
+        
+            unset($resizeObj);
+        }       
+    } else {
+        $old_uploadedfileimage = $_POST['images_old'];
+        $uploadedfileimage = $old_uploadedfileimage;
+    }
 
 #############################################################
 # Add Cource
@@ -92,24 +92,25 @@
                 
                 $hide_fields = $ftitle.",".$fprograms_id.",".$fgroups_id.",".$fday_count.",".$fdate_h.",".$ftime.",".$ftrainer.",".$flocation.",".$fdependence_date.",".$fdependence_number.",".$fmap.",".$fdetails;
 
-                $data['title']		          = trim($_POST['title']);
+                $data['title']                = trim($_POST['title']);
                 $data['programs_id']            = trim($_POST['programs_id']);
                 $data['groups_id']              = implode(",",$_POST['groups_id']);
                 $data['day_count']              = trim($_POST['day_count']);
                 $data['day_hours']              = trim($_POST['day_hours']);
-                $data['date_h']		         = $_POST['date_h'];
-                $data['date_m']		         = $_POST['date_m'];
-                $data['time']		           = $_POST['time'];
-                $data['trainer']	            = trim($_POST['trainer']);
-                $data['location']	            = trim($_POST['location']);
+                $data['day_section']              = trim($_POST['day_section']);
+                $data['date_h']              = $_POST['date_h'];
+                $data['date_m']              = $_POST['date_m'];
+                $data['time']                  = $_POST['time'];
+                $data['trainer']                = trim($_POST['trainer']);
+                $data['location']               = trim($_POST['location']);
                 $data['dependence_date']        = $_POST['dependence_date'];
                 $data['dependence_number']      = $_POST['dependence_number'];
                 $data['details']                = $_POST['details'];
                 $data['con_reg']                = $_POST['con_reg'];
-				
-				
+                
+                
                 $data['status']                 = $_POST['status'];
-                $data['cancel_reservation_time']	= $_POST['cancel_reservation_time'];
+                $data['cancel_reservation_time']    = $_POST['cancel_reservation_time'];
                 $data['map']                    = $uploadedfileimage;
                 $data['hide_fields']            = $hide_fields;
                 $data['open_close_register']    = $_POST['open_close_register'];
@@ -120,7 +121,7 @@
                 $isInsert = $pdo->pdoRowCount($insert);
                 if($isInsert == 1){
                     $insert_id = $pdo->pdoLastInsertId($insert);
-            		header('Location: ?do=show&process=successfully');
+                    header('Location: ?do=show&process=successfully');
                 }else{
                     header('Location: ?do=show&process=failure');
                 }
@@ -150,7 +151,7 @@
         $fdependence_number = $hide_fields[9];
         $fmap               = $hide_fields[10];
         $fdetails           = $hide_fields[11];
-			
+            
 
     }
 
@@ -171,18 +172,18 @@
                 $fcon_reg           = isset($_POST['fcon_reg']) ? "1" : "0" ;
                 
                 $hide_fields = $ftitle.",".$fprograms_id.",".$fgroups_id.",".$fday_count.",".$fdate_h.",".$ftime.",".$ftrainer.",".$flocation.",".$fdependence_date.",".$fdependence_number.",".$fmap.",".$fdetails.",".$fcon_reg;
-				
-				/*$groups_id = $_POST['groups_id_1'].",".$_POST['groups_id_2'].",".$_POST['groups_id_3'].",".$_POST['groups_id_4'].",".$_POST['groups_id_5'];*/
-                $data['title']		          = trim($_POST['title']);
+                
+                /*$groups_id = $_POST['groups_id_1'].",".$_POST['groups_id_2'].",".$_POST['groups_id_3'].",".$_POST['groups_id_4'].",".$_POST['groups_id_5'];*/
+                $data['title']                = trim($_POST['title']);
                 $data['programs_id']            = trim($_POST['programs_id']);
                 /*$data['groups_id']              = $groups_id;*/
                 $data['day_count']              = trim($_POST['day_count']);
-                $data['date_h']		         = $_POST['date_h'];
-                $data['date_m']		         = $_POST['date_m'];
-                $data['time']		           = $_POST['time'];
-                $data['cancel_reservation_time']	= $_POST['cancel_reservation_time'];
-                $data['trainer']	            = trim($_POST['trainer']);
-                $data['location']	           = trim($_POST['location']);
+                $data['date_h']              = $_POST['date_h'];
+                $data['date_m']              = $_POST['date_m'];
+                $data['time']                  = $_POST['time'];
+                $data['cancel_reservation_time']    = $_POST['cancel_reservation_time'];
+                $data['trainer']                = trim($_POST['trainer']);
+                $data['location']              = trim($_POST['location']);
                 $data['dependence_date']        = $_POST['dependence_date'];
                 $data['dependence_number']      = $_POST['dependence_number'];
                 $data['details']                = $_POST['details'];
@@ -389,7 +390,7 @@
         case "edit_group":
         include("template/course/edit_group.php");
         break;
-		
+        
         case "show_day":
         include("template/course/show_day.php");
         break;
@@ -506,7 +507,7 @@ $(document).ready(function() {
 <script src="calender_hr/jquery.calendars.js"></script>
 <script src="calender_hr/jquery.calendars.plus.js"></script>
 <script src="calender_hr/jquery.calendars.picker.js"></script>
-<!--<script src="jquery.calendars.picker.ext.js"></script><!-- Include for ThemeRoller styling -->
+<!--<script src="jquery.calendars.picker.ext.js"></script>< Include for ThemeRoller styling -->
 <script src="calender_hr/jquery.calendars.all.js"></script>
 <script src="calender_hr/jquery.calendars.islamic.js"></script>
 

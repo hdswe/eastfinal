@@ -1,4 +1,7 @@
-﻿<form method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
+﻿<style>
+  .form-control {height: 45px;} 
+</style>
+<form method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
 <?php $addToken = new Token; $addToken->protectForm(); ?> 
 <div class="panel panel-default">
         <div class="panel-heading">
@@ -19,7 +22,7 @@
               <label class="col-sm-2 control-label">البرنامج</label>
               <div class="col-sm-6">
                 <select name="programs_id" required class="form-control" id="programs_id">
-                	<option value=""></option>
+                  <option value=""></option>
                 <?
                     $sql = "SELECT * FROM `programs` ORDER BY `id` DESC";
                     $rows = $pdo->pdoGetAll($sql);
@@ -50,10 +53,10 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">عدد الأيام</label>
               <div class="col-sm-6">
-				<select name="day_count" class="form-control">
+        <select name="day_count" class="form-control">
                 <? for($i=0; $i<101; $i++) { ?>
-				  <option value="<?= $i ?>"><?= $i ?></option>
-                <? } ?>		
+          <option value="<?= $i ?>"><?= $i ?></option>
+                <? } ?>   
                 </select>
 
               </div>
@@ -61,12 +64,19 @@
 
             <div class="form-group">
                 <label class="col-sm-2 control-label"> عدد الساعات اليومية</label>
-                <div class="col-sm-6">
+                <div class="col-sm-3">
                     <select name="day_hours" class="form-control">
                         <? for($i=1; $i<25; $i++) { ?>
                             <option value="<?= $i ?>"><?= $i ?></option>
                         <? } ?>
                         </select>
+
+                </div>
+                <div class="col-sm-3">
+                    <select name="day_section" class="form-control">
+                            <option value="مساء"><?= "مساء" ?></option>
+                            <option value="صباحا"><?= "صباحا" ?></option>
+                    </select>
 
                 </div>
             </div>
@@ -100,7 +110,7 @@
               </div>
             </div>
 
-		<div class="form-group">
+    <div class="form-group">
               <label class="col-sm-2 control-label">عدد ساعات الغاء الحجز</label>
               <div class="col-sm-6">
                 <input name="cancel_reservation_time" type="text" class="form-control" id="cancel_reservation_time" onchange="try{setCustomValidity('')}catch(e){}" value="1" oninvalid="setCustomValidity('لايمكن ترك الحقل فارغ')"/>
@@ -164,14 +174,14 @@
 <div class="form-group">
               <label class="col-sm-2 control-label">أهداف الدورة</label>
               <div class="col-sm-6">
-			<textarea name="details" id="wysiwyg" placeholder="" class="form-control" rows="5"></textarea>
+      <textarea name="details" id="wysiwyg" placeholder="" class="form-control" rows="5"></textarea>
               </div>
             </div>
             
             <div class="form-group">
               <label class="col-sm-2 control-label">شروط التسجيل</label>
               <div class="col-sm-6">
-			<textarea name="con_reg" id="con_reg" placeholder="" class="form-control" rows="5"></textarea>
+      <textarea name="con_reg" id="con_reg" placeholder="" class="form-control" rows="5"></textarea>
               </div>
             </div>
             
@@ -294,13 +304,13 @@
         </div><!-- panel-body -->
         
         <div class="panel-footer">
-			 <div class="row">
-				<div class="col-sm-6 col-sm-offset-3">
+       <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
                   <input name="btnadd" type="submit" id="btnadd" value="اضافة" class="btn btn-primary">&nbsp;
                   <a href="javascript: history.go(-1)" class="btn btn-default">خروج</a>
-				</div>
-			 </div>
-		  </div><!-- panel-footer -->
+        </div>
+       </div>
+      </div><!-- panel-footer -->
         
       </div>
 </form>

@@ -18,18 +18,18 @@
             </div>
         <div class="col-sm-8">
         <div class="row">
-		<div class="col-sm-5">
+    <div class="col-sm-5">
             <div class="form-group">
             <select class="form-control chosen-select" data-placeholder="اختر البرنامج">
                   <option value=""></option>
                   <?
-				$sql = "SELECT * FROM `programs` WHERE archive='no' ORDER BY `id` DESC";
-				$rows = $pdo->pdoGetAll($sql);
-				foreach($rows as $result) {
+        $sql = "SELECT * FROM `programs` WHERE archive='no' ORDER BY `id` DESC";
+        $rows = $pdo->pdoGetAll($sql);
+        foreach($rows as $result) {
 
-				?>
+        ?>
                   <option value="United States"><?= $result['title'] ?></option>
-				<? } ?>
+        <? } ?>
                 </select>
             </div>
             </div>
@@ -67,7 +67,7 @@
               <tr>
                 <th></th>
                 <th>عنوان الدورة <span style="width: 200px;background-image: url(images/sort_icon.png)">&nbsp;&nbsp;&nbsp;&nbsp;</span></th>
-                <th>رابط الاستبيان</th>
+<!--                <th>رابط الاستبيان</th>-->
                 <th>البرنامج <span style="width: 200px;background-image: url(images/sort_icon.png)">&nbsp;&nbsp;&nbsp;&nbsp;</span></th>
                 <th>الحالة <span style="width: 200px;background-image: url(images/sort_icon.png)">&nbsp;&nbsp;&nbsp;&nbsp;</span></th>
                 <th>أيام الدورة<span style="width: 200px;background-image: url(images/sort_icon.png)">&nbsp;&nbsp;&nbsp;&nbsp;</span></th>
@@ -84,7 +84,7 @@
                             course.title AS coutitle,
                             course.programs_id,
                             course.status,
-							course.archive,
+              course.archive,
                             course.day_count AS days, 
                             
                             programs.id AS prid,
@@ -95,10 +95,10 @@
                             WHERE
                             programs_id=programs_id AND
                             programs.id = course.programs_id AND
-							course.archive = 'no'
-							ORDER BY course.id ASC
-							LIMIT $startpoint , $limit
-							
+              course.archive = 'no'
+              ORDER BY course.id ASC
+              LIMIT $startpoint , $limit
+              
                             
                 ";
                     $ExecuteSql = $pdo->pdoExecute($sql);
@@ -130,21 +130,21 @@
                                                   
                         </td>
                 <td><?= $result['coutitle'] ?></td>
-                <td><a href="../questionnaire.php?course=<?= $result['couid'] ?>">questionnaire.php?course=<?= $result['couid'] ?></a></td>
+<!--                <td><a href="../questionnaire.php?course=--><?//= $result['couid'] ?><!--">questionnaire.php?course=--><?//= $result['couid'] ?><!--</a></td>-->
                 <td><?= $result['prtitle'] ?></td>
                 <td><?
-				if ($result['status'] == '1') {
-					echo 'مفتوحة';
-				} elseif ($result['status'] == '2') {
-					echo 'ملغاة';
-				} elseif ($result['status'] == '3') {
-					echo 'مؤجلة';
-				}
-				?></td>
-				<td>
-				
-				<?
-				                $sql_day = "SELECT * FROM `day_course` WHERE course_id=".$result['couid']."";
+        if ($result['status'] == '1') {
+          echo 'مفتوحة';
+        } elseif ($result['status'] == '2') {
+          echo 'ملغاة';
+        } elseif ($result['status'] == '3') {
+          echo 'مؤجلة';
+        }
+        ?></td>
+        <td>
+        
+        <?
+                        $sql_day = "SELECT * FROM `day_course` WHERE course_id=".$result['couid']."";
                             
                
                     $ExecuteSql_day = $pdo->pdoExecute($sql_day);
@@ -152,8 +152,8 @@
 
 
                     
-						?>
-				<? if($pdo->pdoRowCount($ExecuteSql_day) >= 1){echo '<span style="color:green">مضاف</span>';}else{echo '<span style="color:red">غير مضاف</span>';} ?></td>
+            ?>
+        <? if($pdo->pdoRowCount($ExecuteSql_day) >= 1){echo '<span style="color:green">مضاف</span>';}else{echo '<span style="color:red">غير مضاف</span>';} ?></td>
                 <td class="table-action"> 
                         <a href="?do=edit&id=<? echo $result['couid'] ?>" title="تعديل" data-placement="top" data-toggle="tooltip" class="tooltips"><i class="fa fa-pencil"></i></a>
                         <a href="?del=<? echo $result['couid'] ?>" title="حذف" data-placement="top" data-toggle="tooltip" class="tooltips" onclick="return confirm('هل انت متأكد من عملية الحذف؟ هذا الأجراء لايمكن التراجع عنه بعد تنفيذه')"><i class="fa fa-trash-o"></i></a>

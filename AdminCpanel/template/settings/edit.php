@@ -1,4 +1,7 @@
-﻿<div class="row">
+﻿<style>
+  .form-control {height: 45px;} 
+</style>
+<div class="row">
 <div class="col-md-12 mb30">
           
         <!-- Nav tabs -->
@@ -6,6 +9,7 @@
           <li class="active"><a href="#home" data-toggle="tab"><strong>إعددات عامة</strong></a></li>
           <li><a href="#profile" data-toggle="tab"><strong>إعددات SMS</strong></a></li>
           <li><a href="#menu" data-toggle="tab"><strong>القوائم المسندلة</strong></a></li>
+          <li><a href="#social" data-toggle="tab"><strong>مواقع التواصل الاجتماعي</strong></a></li>
         </ul>
         
         <!-- Tab panes -->
@@ -225,6 +229,74 @@
 
           </div>
           
+
+<div class="tab-pane" id="social">
+            
+            
+            <form method="post" class="form-horizontal form-bordered">
+            <?php 
+            $addToken = new Token; 
+            $addToken->protectForm(); 
+            ?> 
+
+        <div class="panel-body panel-body-nopadding">
+          
+            <div class="form-group">
+              <label class="col-sm-2 control-label">فيسبوك</label>
+              <div class="col-sm-6">
+
+     
+      <input name="fb" type="text" class="form-control"placeholder="ادخل رابط فيسبوك" id="usr">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-2 control-label">تويتر</label>
+              <div class="col-sm-6">
+
+<input name="tw" type="text" class="form-control"placeholder="ادخل رابط تويتر" id="usr">
+
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-2 control-label">قووقل بلس</label>
+              <div class="col-sm-6">
+
+      <input name="go" type="text" class="form-control"placeholder=" ادخل رابط قوقل بلس" id="usr">
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">انستغرام</label>
+              <div class="col-sm-6">
+
+      <input name="ins" type="text" class="form-control"placeholder="ادخل رابط انستغرام" id="usr">
+              </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">يوتيوب</label>
+                <div class="col-sm-6">
+
+                        <input name="yo" type="text" class="form-control"placeholder="ادخل رابط يوتيوب" id="usr">
+                </div>
+            </div>
+            
+        </div><!-- panel-body -->
+        
+        <div class="panel-footer">
+       <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+                <input name="btnsavesocial" type="submit" class="btn btn-primary" id="btnsavemenu" value="حفظ">
+        </div>
+       </div>
+      </div><!-- panel-footer -->
+</form>
+
+
+          </div>
+
+
         </div>
         
       

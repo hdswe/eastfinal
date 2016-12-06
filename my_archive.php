@@ -1,10 +1,7 @@
 <?php
     require ("header.php");
     require ("include/Hijri_GregorianConvert.php");
-	$DateConv=new Hijri_GregorianConvert;
-
-
-
+    $DateConv=new Hijri_GregorianConvert;
 ?>
 
     <aside id="sidebar" class="medium-3 large-3 columns">
@@ -45,6 +42,7 @@
                                             <th>أيام الدورة</th>
                                             <th>عدد ايام الحظور</th>
                                             <th>التفاصيل</th>
+                                            <th>التقييم</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -56,7 +54,6 @@
                              reservation.course_id,
                              reservation.status,
                              reservation.date,
-
                              course.id AS cid,
                              course.title,
                              course.date_m,
@@ -76,7 +73,6 @@
                              users.id=".$_SESSION['user_id'];
                             $rows = $pdo->pdoGetAll($sqlIdCourse);
                             foreach($rows as $result) {
-
                             ?>
                                         <tr>
                                             <td><?php echo $result['reid'] ?></td>
@@ -100,6 +96,20 @@
                                             ?>
                                             
                                             </td>
+                                            <td>
+                                                <?php
+                                                $excute_rating = $pdo->pdoExecute("SELECT * FROM `questionnaire` WHERE course_id=".$result['cid']." AND user_id=".$idUser."");
+                                                $rating = $pdo->pdoRowCount($excute_rating);
+                                                if ($count_day != $result['day_count']){
+                                                    echo 'غير متاح لك';
+                                                }
+                                                elseif($rating == 1) {
+                                                    echo 'قمت بتقيم الدورة';
+                                                } else {
+                                                    echo '<a href="questionnaire.php?course='.$result['cid'].'">تقيم الدورة</a>';
+                                                }
+                                                ?>
+
                                         </tr>
                                      <?php } ?>
                                         
@@ -122,7 +132,6 @@
                         $result_course = $pdo->pdoGetRow($sql_course, $data_course);
                         echo $result_course['title']."<br><br>
 ";
-
                         ?>
                        </h3>    
 
@@ -134,7 +143,6 @@
                 $id = $_GET['course'];
                 $rows_day = $pdo->pdoGetAll("SELECT * FROM `day_course` WHERE course_id=".$id." ORDER BY `id` DESC");
                 foreach($rows_day as $result_day) {
-
                 ?>
                 <th>
                 <?php
@@ -173,9 +181,6 @@
                         ORDER BY `resid` DESC
                     ";
                     $ExecuteSql = $pdo->pdoExecute($sql);
-
-
-
                     if($pdo->pdoRowCount($ExecuteSql) < 1){
                     echo '
                     <tr>
@@ -187,7 +192,6 @@
                     </tr>
                     ';
                     } else {
-
                     $rows = $pdo->pdoGetAll($sql);
                     
                     foreach($rows as $result) {
@@ -200,11 +204,11 @@
                 <?php 
                 $rows_day = $pdo->pdoGetAll("SELECT * FROM `day_course` WHERE course_id=".$id." ORDER BY `id` DESC");
                 foreach($rows_day as $result_day) {
-
                 $register_day = $pdo->pdoGetRow("SELECT * FROM `registr_attend` WHERE course_id=".$id." AND day_course_id=".$result_day['id']." AND user_id=".$result['userid']."");
-
                 ?>
                 <td><?php if($register_day['id'] != NULL){ echo '<span class="glyphicon glyphicon-ok"></span>'; } else { echo '<span class="glyphicon glyphicon-remove"></span>'; } ?></td>
+                    <td><?php if($register_day['id'] != NULL){ echo '<span class="glyphicon glyphicon-ok"></span>'; } else { echo '<span class="glyphicon glyphicon-remove"></span>'; } ?></td>
+
                 <?php }  ?>
                 </tr>
                 <?php } } ?>
@@ -224,4 +228,3 @@
 
 
           <?php include('footer.php') ?>
-

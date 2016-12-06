@@ -63,7 +63,23 @@
                die(header("Location: login.php"));
         }
     }
-
+#############################################################
+# Save Menu Settings
+#############################################################
+if(isset($_POST['btnsavesocial'])) {
+    if($chkToken->Check()) {
+        $data[fb]    = $_POST['fb'];
+        $data[tw] = $_POST['tw'];
+        $data[go] 		= $_POST['go'];
+        $data[ins] = $_POST['ins'];
+        $data[yo] = $_POST['yo'];
+        $where[id] = '1';
+        $result = $pdo->pdoInsUpd('social', $data, 'update', $where);
+        header('Location: ?edit=successfully');
+    } else {
+        die(header("Location: login.php"));
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

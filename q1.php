@@ -1,46 +1,49 @@
 <?php
+var_dump(1);
+die();
 	include('header.php');
-/*		for($i=1; $i<=16; $i++){
-			$f = 'w'.$i.'';
-			$insert	= $pdo->pdoExecute("ALTER TABLE `questionnaire` ADD `".$f."` VARCHAR(20) NOT NULL");
-		}
 
-
-*/	
-
-	$sql_is_insert = "SELECT * FROM `questionnaire` WHERE `course_id` = ".$_GET['course']." ";
-
-	$execsql_is_insert = $pdo->pdoExecute($sql_is_insert);
-//	if($pdo->pdoRowCount($execsql_is_insert) > 0) {
-		$table_show = 'yes';
-		$reslut = $pdo->pdoGetRow($sql_is_insert);
+///*		for($i=1; $i<=16; $i++){
+//			$f = 'w'.$i.'';
+//			$insert	= $pdo->pdoExecute("ALTER TABLE `questionnaire` ADD `".$f."` VARCHAR(20) NOT NULL");
+//		}
+//
+//
+//*/
+//
+//	$sql_is_insert = "SELECT * FROM `questionnaire` WHERE `course_id` = ".$_GET['course']." ";
+//
+//	$execsql_is_insert = $pdo->pdoExecute($sql_is_insert);
+////	if($pdo->pdoRowCount($execsql_is_insert) > 0) {
+//		$table_show = 'yes';
+//		$reslut = $pdo->pdoGetRow($sql_is_insert);
+////	}
+//
+//	if(isset($_POST['btnsend'])) {
+//		$data['user_id']			= $_SESSION['user_id'];
+//		$data['course_id']			= $_GET['course'];
+//
+//		for($i=1; $i<=20; $i++){
+//			$data['q'.$i.'']		= trim($_POST['q'.$i.'']);
+//		}
+//		for($iw=1; $iw<=16; $iw++){
+//			$data['w'.$iw.'']		= trim($_POST['w'.$iw.'']);
+//		}
+//		$insert						= $pdo->pdoInsUpd('questionnaire', $data);
+//		header('Location: ?course='.$_GET['course'].'&process=successfully');
+//    }
+//
+//	/*if(isset($_GET['course'])&&isset($_GET['user_id'])){
+//		$sql_course = "SELECT * FROM `course` WHERE `id` = ".$_GET['course']." and `user_id`=".$_GET['user_id']."";
+//		$reslut_course = $pdo->pdoGetRow($sql_course);
+//	}*/
+//	if(isset($_GET['course'])){
+//		$sql_course = "SELECT * FROM `course` WHERE `id` = ".$_GET['course']."";
+//		$reslut_course = $pdo->pdoGetRow($sql_course);
 //	}
-
-	if(isset($_POST['btnsend'])) {
-		$data['user_id']			= $_SESSION['user_id'];
-		$data['course_id']			= $_GET['course'];
-
-		for($i=1; $i<=20; $i++){
-			$data['q'.$i.'']		= trim($_POST['q'.$i.'']);
-		}
-		for($iw=1; $iw<=16; $iw++){
-			$data['w'.$iw.'']		= trim($_POST['w'.$iw.'']);
-		}
-		$insert						= $pdo->pdoInsUpd('questionnaire', $data);
-		header('Location: ?course='.$_GET['course'].'&process=successfully');
-    }
-
-	/*if(isset($_GET['course'])&&isset($_GET['user_id'])){
-		$sql_course = "SELECT * FROM `course` WHERE `id` = ".$_GET['course']." and `user_id`=".$_GET['user_id']."";
-		$reslut_course = $pdo->pdoGetRow($sql_course);
-	}*/
-	if(isset($_GET['course'])){ 
-		$sql_course = "SELECT * FROM `course` WHERE `id` = ".$_GET['course']."";
-		$reslut_course = $pdo->pdoGetRow($sql_course);
-	}
-
-	
-?>
+//
+//
+//?>
 <style>
 input[type="checkbox"], input[type="radio"] {
     opacity: 10;

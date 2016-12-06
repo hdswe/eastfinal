@@ -20,7 +20,7 @@
 #############################################################
 
     if(isset($_POST['btnadd'])) {
-   	$group_id;
+    $group_id;
         if($chkToken->Check()) { 
                 $data['title']= trim($_POST['title']);
                 $data['course_id']=trim($_POST['course']);
@@ -29,44 +29,44 @@
                 $dataQ['questionnaire_id'] = $pdo->pdoLastInsertId();
                 if($isInsert == 1){
                 
-                   	 foreach ($_POST as $key => $value){
-   				if(isset($value)&& trim($value)!="" && $value!=" " && $value!="" && $value!=null){
-		                    	if(strpos($key ,'groupfield')!== false){
-		                    		$group_id="";
-		                    			$dataG['title']=$value;
-		                    			$insert = $pdo->pdoInsUpd('questionsGroups', $dataG);
-	                				$isInsert = $pdo->pdoRowCount($insert);
-	                				$group_id=$pdo->pdoLastInsertId();
-	                				
-	                				
-	                				
-		                    		
-		                    	}else if(strpos($key ,'grouplist')!== false){
-		                    		
-		                    			$sqlG = "SELECT * FROM `questionsGroups` where id=:id";
-		        				$datagroup[id] = $value;
-		        				$resultG = $pdo->pdoGetRow($sqlG, $datagroup);
-		        				$group_id=$resultG['id'];
-		        				
-		        				
-		                    		
-		                    	}else if(strpos($key ,'question')!== false){
-	
-		                    		if($group_id!=""&&$group_id!=" "&&$group_id!=null){
-		                    			$dataQ['title']=$value;
-			                    		$dataQ['qgroup_id']=$group_id;
-			                    		$insert = $pdo->pdoInsUpd('questionsOfquestionnair', $dataQ);
-		                			$isInsert = $pdo->pdoRowCount($insert);
-		                			
-		                			
-		                    		}
-		                    		
-		                    		
-		                    	
-		                    	}
-	                    	}
-                   	 }
-                   	 //header('Location: ?do=show&process=successfully');
+                     foreach ($_POST as $key => $value){
+                if(isset($value)&& trim($value)!="" && $value!=" " && $value!="" && $value!=null){
+                                if(strpos($key ,'groupfield')!== false){
+                                    $group_id="";
+                                        $dataG['title']=$value;
+                                        $insert = $pdo->pdoInsUpd('questionsGroups', $dataG);
+                                    $isInsert = $pdo->pdoRowCount($insert);
+                                    $group_id=$pdo->pdoLastInsertId();
+                                    
+                                    
+                                    
+                                    
+                                }else if(strpos($key ,'grouplist')!== false){
+                                    
+                                        $sqlG = "SELECT * FROM `questionsGroups` where id=:id";
+                                $datagroup[id] = $value;
+                                $resultG = $pdo->pdoGetRow($sqlG, $datagroup);
+                                $group_id=$resultG['id'];
+                                
+                                
+                                    
+                                }else if(strpos($key ,'question')!== false){
+    
+                                    if($group_id!=""&&$group_id!=" "&&$group_id!=null){
+                                        $dataQ['title']=$value;
+                                        $dataQ['qgroup_id']=$group_id;
+                                        $insert = $pdo->pdoInsUpd('questionsOfquestionnair', $dataQ);
+                                    $isInsert = $pdo->pdoRowCount($insert);
+                                    
+                                    
+                                    }
+                                    
+                                    
+                                
+                                }
+                            }
+                     }
+                     //header('Location: ?do=show&process=successfully');
                     
                 }else{
                     header('Location: ?do=show&process=failure');
@@ -87,52 +87,52 @@
 
     if(isset($_POST['btnedit'])) {
     
-    	$group_id;
-   	
+        $group_id;
+    
         if($chkToken->Check()) { 
-                $data['title']		          = trim($_POST['title']);
+                $data['title']                = trim($_POST['title']);
                 $data['course_id']=trim($_POST['course']);
                 $where[id] = $_GET['id'];
                 $update = $pdo->pdoInsUpd('questionnaire', $data, 'update', $where);
                 $dataQ['questionnaire_id']=$_GET['id'];
-                	foreach ($_POST as $key => $value){
-   				if(isset($value)&& trim($value)!="" && $value!=" " && $value!="" && $value!=null){
-		                    	if(strpos($key ,'groupfield')!== false){
-		                    			$group_id="";
-		                    			$dataG['title']=$value;
-		                    			$insert = $pdo->pdoInsUpd('questionsGroups', $dataG);
-	                				$isInsert = $pdo->pdoRowCount($insert);
-	                				$group_id=$pdo->pdoLastInsertId();
-	                				
-	                				
-	                				
-		                    		
-		                    	}else if(strpos($key ,'grouplist')!== false){
-		                    		
-		                    			$sqlG = "SELECT * FROM `questionsGroups` where id=:id";
-		        				$datagroup[id] = $value;
-		        				$resultG = $pdo->pdoGetRow($sqlG, $datagroup);
-		        				$group_id=$resultG['id'];
-		        				
-		        				
-		                    		
-		                    	}else if(strpos($key ,'question')!== false){
-	
-		                    		if($group_id!=""&&$group_id!=" "&&$group_id!=null){
-		                    			$dataQ['title']=$value;
-			                    		$dataQ['qgroup_id']=$group_id;
-			                    		$insert = $pdo->pdoInsUpd('questionsOfquestionnair', $dataQ);
-		                			$isInsert = $pdo->pdoRowCount($insert);
-		                			
-		                			
-		                    		}
-		                    		
-		                    		
-		                    		
-		                    	
-		                    	}
-	                    	}
-                   	 }
+                    foreach ($_POST as $key => $value){
+                if(isset($value)&& trim($value)!="" && $value!=" " && $value!="" && $value!=null){
+                                if(strpos($key ,'groupfield')!== false){
+                                        $group_id="";
+                                        $dataG['title']=$value;
+                                        $insert = $pdo->pdoInsUpd('questionsGroups', $dataG);
+                                    $isInsert = $pdo->pdoRowCount($insert);
+                                    $group_id=$pdo->pdoLastInsertId();
+                                    
+                                    
+                                    
+                                    
+                                }else if(strpos($key ,'grouplist')!== false){
+                                    
+                                        $sqlG = "SELECT * FROM `questionsGroups` where id=:id";
+                                $datagroup[id] = $value;
+                                $resultG = $pdo->pdoGetRow($sqlG, $datagroup);
+                                $group_id=$resultG['id'];
+                                
+                                
+                                    
+                                }else if(strpos($key ,'question')!== false){
+    
+                                    if($group_id!=""&&$group_id!=" "&&$group_id!=null){
+                                        $dataQ['title']=$value;
+                                        $dataQ['qgroup_id']=$group_id;
+                                        $insert = $pdo->pdoInsUpd('questionsOfquestionnair', $dataQ);
+                                    $isInsert = $pdo->pdoRowCount($insert);
+                                    
+                                    
+                                    }
+                                    
+                                    
+                                    
+                                
+                                }
+                            }
+                     }
                 
 
                 header('Location: ?do=show&process=successfully');
@@ -143,14 +143,14 @@
     
  if(isset($_POST['btneditq'])) {
         if($chkToken->Check()) { 
-                $dataq['title']		          = trim($_POST['title']);
+                $dataq['title']               = trim($_POST['title']);
                 $whereq[id] = $_GET['idq'];
                 $update = $pdo->pdoInsUpd('questionsOfquestionnair', $dataq, 'update', $whereq);
 
                header('Location: ?do=edit&id='.$_GET['id']);
             } else { 
                die(header("Location: login.php")); 
-        	}  
+            }  
     }
 #############################################################
 # Delete One questionnaire
@@ -321,10 +321,10 @@ $(document).ready(function() {
 var next =  parseInt(jQuery("#b0").attr('for'))-1;
 var qnext=0;
     jQuery(".add-more").click(function(e){
-    	/*var nameg= jQuery(this).attr("name");
-    	alert();
-        	if(nameg.indexOf('add')>=0){
-        	}else{*/
+        /*var nameg= jQuery(this).attr("name");
+        alert();
+            if(nameg.indexOf('add')>=0){
+            }else{*/
         e.preventDefault();
         //var addto = "#field" + next;
         // var addRemove = "#field" + (next);
@@ -372,60 +372,60 @@ var qnext=0;
         //jQuery("#field" + next).attr('data-source',jQuery(addto).attr('data-source'));
         //jQuery("#count").val(next);  
         jQuery('.remove-me').click(function(){
-        	var name= jQuery(this).attr("name");
-        	if(name.indexOf('removeg')>=0){
-  			e.preventDefault();
-	                var fieldNum = this.id.substring(7,this.id.length);
-	                //alert(fieldNum );
-	                /*var fieldID = "#field" + fieldNum;
-	                jQuery(this).remove();
-	                jQuery(fieldID).remove();
-	                jQuery("#br"+fieldNum).remove();
-	                
-	                */
-	                jQuery(this).remove();
-	                jQuery("#groupid"+fieldNum).remove();
-	                jQuery("#selectg"+fieldNum).remove();
-	                jQuery("#br"+fieldNum).remove();
-	                jQuery("#divGroup"+fieldNum ).remove();
-	                jQuery("#br"+fieldNum).remove();
-        	}
+            var name= jQuery(this).attr("name");
+            if(name.indexOf('removeg')>=0){
+            e.preventDefault();
+                    var fieldNum = this.id.substring(7,this.id.length);
+                    //alert(fieldNum );
+                    /*var fieldID = "#field" + fieldNum;
+                    jQuery(this).remove();
+                    jQuery(fieldID).remove();
+                    jQuery("#br"+fieldNum).remove();
+                    
+                    */
+                    jQuery(this).remove();
+                    jQuery("#groupid"+fieldNum).remove();
+                    jQuery("#selectg"+fieldNum).remove();
+                    jQuery("#br"+fieldNum).remove();
+                    jQuery("#divGroup"+fieldNum ).remove();
+                    jQuery("#br"+fieldNum).remove();
+            }
             });
             
-             	//jQuery('#b'+next).click(function(e){
-             	jQuery(".add-more").click(function(e){
-        		e.preventDefault();
-        		var fieldNumq = this.id.substring(1,this.id.length);
-        		if(fieldNumq !="0"){
-        			qnext=qnext+1;
-        			var newInq = 
-        		       
-        			'<span id="qspan'+qnext+'"><input value="" autocomplete="off" class="input form-control" id="questionid' + qnext + '" name="question' + qnext + '" type="text" >'
-       		 +
-        	'<button name="removeq' + (qnext ) + '" id="removeq' + (qnext ) + '" class="btn btn-danger remove-me" type="button" style="width:42px">-</button>'
-       		 +'<br>'+
-        	'<br></span>'
-      		;
-       		 var newInputq = jQuery(newInq);
+                //jQuery('#b'+next).click(function(e){
+                jQuery(".add-more").click(function(e){
+                e.preventDefault();
+                var fieldNumq = this.id.substring(1,this.id.length);
+                if(fieldNumq !="0"){
+                    qnext=qnext+1;
+                    var newInq = 
+                       
+                    '<span id="qspan'+qnext+'"><input value="" autocomplete="off" class="input form-control" id="questionid' + qnext + '" name="question' + qnext + '" type="text" >'
+             +
+            '<button name="removeq' + (qnext ) + '" id="removeq' + (qnext ) + '" class="btn btn-danger remove-me" type="button" style="width:42px">-</button>'
+             +'<br>'+
+            '<br></span>'
+            ;
+             var newInputq = jQuery(newInq);
         
-       		 var addbeforeq=jQuery(this);
+             var addbeforeq=jQuery(this);
         
-        	jQuery(addbeforeq).before(newInputq);
-        	
-        		jQuery('.remove-me').click(function(){
-        			e.preventDefault();
-        			var fieldNumqr = this.id.substring(7,this.id.length);
-        			//alert(fieldNumqr);
-	               		jQuery(this).remove();
-	               		jQuery("#questionid"+fieldNumqr).remove();
-	               		
-	                	jQuery("#qspan"+fieldNumqr ).remove();
-	                
-	              
-           		 });
-        		}
-        	
-            	});
+            jQuery(addbeforeq).before(newInputq);
+            
+                jQuery('.remove-me').click(function(){
+                    e.preventDefault();
+                    var fieldNumqr = this.id.substring(7,this.id.length);
+                    //alert(fieldNumqr);
+                        jQuery(this).remove();
+                        jQuery("#questionid"+fieldNumqr).remove();
+                        
+                        jQuery("#qspan"+fieldNumqr ).remove();
+                    
+                  
+                 });
+                }
+            
+                });
             
             });
         
